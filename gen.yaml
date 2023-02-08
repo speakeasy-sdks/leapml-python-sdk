@@ -1,5 +1,9 @@
+management:
+    openapi-checksum: 1a3869d6217dbdce3230575d47517672
+    openapi-version: "1.0"
+    speakeasy-version: 1.1.2
 python:
-    version: 1.0.0
+    version: 1.1.0
     packagename: leapml
     author: leapml
 sdkclassname: LeapMLAPI
