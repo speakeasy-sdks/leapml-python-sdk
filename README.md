@@ -1,4 +1,4 @@
-# leapml
+# LeapML Python SDK
 
 <!-- Start SDK Installation -->
 ## SDK Installation
