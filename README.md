@@ -3,6 +3,7 @@
 <div align="center">
    <p>Generate images, edit them, fine tune models, and more with an easy-to-use API.</p>
    <img src="https://img.shields.io/github/actions/workflow/status/speakeasy-sdks/leapml-python-sdk/speakeasy_sdk_generation.yml?style=for-the-badge" />
+   <img src="https://img.shields.io/badge/pypi-1.0.0-blue?style-for-the-badge" />
 </div>
 
 <!-- Start SDK Installation -->
