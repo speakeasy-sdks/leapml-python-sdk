@@ -1,6 +1,8 @@
 # LeapML Python SDK
 
-Generate images, edit them, fine tune models, and more with an easy-to-use API.
+<center>
+   <p>Generate images, edit them, fine tune models, and more with an easy-to-use API.</p>
+</center>
 
 <!-- Start SDK Installation -->
 ## SDK Installation
