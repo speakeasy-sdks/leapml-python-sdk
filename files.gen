@@ -8,6 +8,7 @@ src/leapmlapi/models/operations/modelscontroller_findall.py
 src/leapmlapi/models/operations/modelscontroller_findone.py
 src/leapmlapi/models/operations/modelscontroller_queue.py
 src/leapmlapi/models/operations/samplescontroller_create.py
+src/leapmlapi/models/operations/samplescontroller_createurl.py
 src/leapmlapi/models/operations/samplescontroller_findall.py
 src/leapmlapi/models/operations/samplescontroller_findone.py
 src/leapmlapi/models/operations/samplescontroller_remove.py
@@ -26,6 +27,7 @@ src/leapmlapi/models/shared/modelversionentity.py
 src/leapmlapi/models/shared/weightsentity.py
 src/leapmlapi/models/shared/trainmodeldto.py
 src/leapmlapi/models/shared/trainingsampleentity.py
+src/leapmlapi/models/shared/uploadsamplesviaurldto.py
 src/leapmlapi/models/shared/inferenceentity.py
 src/leapmlapi/models/shared/createinferencedto.py
 src/leapmlapi/models/shared/editentity.py

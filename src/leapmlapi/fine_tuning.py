@@ -165,6 +165,37 @@ class FineTuning:
         return res
 
     
+    def samples_controller_create_url(self, request: operations.SamplesControllerCreateURLRequest) -> operations.SamplesControllerCreateURLResponse:
+        r"""Upload Image Samples Via Url
+        Upload one or multiple image sample to a model.
+        """
+        
+        base_url = self._server_url
+        
+        url = utils.generate_url(base_url, "/api/v1/images/models/{modelId}/samples/url", request.path_params)
+        
+        headers = {}
+        req_content_type, data, json, files = utils.serialize_request_body(request)
+        if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
+            headers["content-type"] = req_content_type
+        if data is None and json is None:
+           raise Exception('request body is required')
+        
+        client = utils.configure_security_client(self._client, request.security)
+        
+        r = client.request("POST", url, data=data, json=json, files=files, headers=headers)
+        content_type = r.headers.get("Content-Type")
+
+        res = operations.SamplesControllerCreateURLResponse(status_code=r.status_code, content_type=content_type)
+        
+        if r.status_code == 200:
+            if utils.match_content_type(content_type, "application/json"):
+                out = utils.unmarshal_json(r.text, Optional[shared.TrainingSampleEntity])
+                res.training_sample_entity = out
+
+        return res
+
+    
     def samples_controller_find_all(self, request: operations.SamplesControllerFindAllRequest) -> operations.SamplesControllerFindAllResponse:
         r"""List Image Samples
         Given a model ID, returns all image samples for that model.

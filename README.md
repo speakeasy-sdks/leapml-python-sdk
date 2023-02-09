@@ -53,6 +53,7 @@ if res.model_entity is not None:
 * `models_controller_find_one` - Retrieve a Single Model
 * `models_controller_queue` - Queue Training Job
 * `samples_controller_create` - Upload Image Samples
+* `samples_controller_create_url` - Upload Image Samples Via Url
 * `samples_controller_find_all` - List Image Samples
 * `samples_controller_find_one` - Get Image Sample
 * `samples_controller_remove` - Archive Image Sample
