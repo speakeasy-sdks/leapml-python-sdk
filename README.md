@@ -69,7 +69,7 @@ if res.model_entity is not None:
 
 ### image_editing
 
-* `edit_controller_create` - Edit a photo
+* `edit_controller_create` - Edit an image
 * `edit_controller_find_one` - Get an edit
 <!-- End SDK Available Operations -->
 

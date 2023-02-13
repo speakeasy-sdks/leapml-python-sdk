@@ -21,8 +21,8 @@ class ImageEditing:
 
     
     def edit_controller_create(self, request: operations.EditControllerCreateRequest) -> operations.EditControllerCreateResponse:
-        r"""Edit a photo
-        Edit a photo using just a prompt
+        r"""Edit an image
+        Edit an image using just a prompt
         """
         
         base_url = self._server_url
