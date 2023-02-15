@@ -5,18 +5,18 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class ModelsControllerFindAllSecurity:
+class ListAllModelsSecurity:
     bearer: Optional[shared_security.SchemeBearer] = dataclasses.field(default=None, metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer' }})
     bearer1: Optional[shared_security.SchemeBearer] = dataclasses.field(default=None, metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer' }})
     
 
 @dataclasses.dataclass
-class ModelsControllerFindAllRequest:
-    security: ModelsControllerFindAllSecurity = dataclasses.field()
+class ListAllModelsRequest:
+    security: ListAllModelsSecurity = dataclasses.field()
     
 
 @dataclasses.dataclass
-class ModelsControllerFindAllResponse:
+class ListAllModelsResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     model_entities: Optional[list[shared_modelentity.ModelEntity]] = dataclasses.field(default=None)

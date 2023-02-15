@@ -5,22 +5,26 @@ from leapmlapi.models import operations, shared
 
 s = leapmlapi.LeapMLAPI()
    
-req = operations.ModelsControllerCreateRequest(
-    security=operations.ModelsControllerCreateSecurity(
+req = operations.SamplesControllerCreateRequest(
+    security=operations.SamplesControllerCreateSecurity(
         bearer=shared.SchemeBearer(
             authorization="Bearer YOUR_BEARER_TOKEN_HERE",
         ),
     ),
-    request=shared.CreateModelDto(
-        subject_identifier="unde",
-        subject_keyword="deserunt",
-        title="porro",
+    path_params=operations.SamplesControllerCreatePathParams(
+        model_id="unde",
+    ),
+    request=operations.SamplesControllerCreateRequestBody(
+        files=operations.SamplesControllerCreateRequestBodyFiles(
+            content="deserunt".encode(),
+            files="porro",
+        ),
     ),
 )
     
-res = s.fine_tuning.models_controller_create(req)
+res = s.fine_tuning.samples_controller_create(req)
 
-if res.model_entity is not None:
+if res.training_sample_entity is not None:
     # handle response
 ```
 <!-- End SDK Example Usage -->

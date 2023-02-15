@@ -20,120 +20,6 @@ class FineTuning:
         self._gen_version = gen_version
 
     
-    def models_controller_create(self, request: operations.ModelsControllerCreateRequest) -> operations.ModelsControllerCreateResponse:
-        r"""Create Model
-        This endpoint will create a new model
-        """
-        
-        base_url = self._server_url
-        
-        url = base_url.removesuffix("/") + "/api/v1/images/models"
-        
-        headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
-        if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
-            headers["content-type"] = req_content_type
-        if data is None and json is None:
-           raise Exception('request body is required')
-        
-        client = utils.configure_security_client(self._client, request.security)
-        
-        r = client.request("POST", url, data=data, json=json, files=files, headers=headers)
-        content_type = r.headers.get("Content-Type")
-
-        res = operations.ModelsControllerCreateResponse(status_code=r.status_code, content_type=content_type)
-        
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.ModelEntity])
-                res.model_entity = out
-
-        return res
-
-    
-    def models_controller_find_all(self, request: operations.ModelsControllerFindAllRequest) -> operations.ModelsControllerFindAllResponse:
-        r"""List All Models
-        This endpoint will return a list of all models for the workspace.
-        """
-        
-        base_url = self._server_url
-        
-        url = base_url.removesuffix("/") + "/api/v1/images/models"
-        
-        
-        client = utils.configure_security_client(self._client, request.security)
-        
-        r = client.request("GET", url)
-        content_type = r.headers.get("Content-Type")
-
-        res = operations.ModelsControllerFindAllResponse(status_code=r.status_code, content_type=content_type)
-        
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[list[shared.ModelEntity]])
-                res.model_entities = out
-
-        return res
-
-    
-    def models_controller_find_one(self, request: operations.ModelsControllerFindOneRequest) -> operations.ModelsControllerFindOneResponse:
-        r"""Retrieve a Single Model
-        This endpoint will return a single model.
-        """
-        
-        base_url = self._server_url
-        
-        url = utils.generate_url(base_url, "/api/v1/images/models/{modelId}", request.path_params)
-        
-        
-        client = utils.configure_security_client(self._client, request.security)
-        
-        r = client.request("GET", url)
-        content_type = r.headers.get("Content-Type")
-
-        res = operations.ModelsControllerFindOneResponse(status_code=r.status_code, content_type=content_type)
-        
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.ModelEntity])
-                res.model_entity = out
-
-        return res
-
-    
-    def models_controller_queue(self, request: operations.ModelsControllerQueueRequest) -> operations.ModelsControllerQueueResponse:
-        r"""Queue Training Job
-        This endpoint will queue a new model version to be trained. 
-            
-            After uploading image samples via the samples endpoint. You can use this endpoint to queue a new model version to be trained.
-            
-            Upon completion, you'll be able to query your custom model via the inference endpoint.
-        """
-        
-        base_url = self._server_url
-        
-        url = utils.generate_url(base_url, "/api/v1/images/models/{modelId}/queue", request.path_params)
-        
-        headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
-        if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
-            headers["content-type"] = req_content_type
-        
-        client = utils.configure_security_client(self._client, request.security)
-        
-        r = client.request("POST", url, data=data, json=json, files=files, headers=headers)
-        content_type = r.headers.get("Content-Type")
-
-        res = operations.ModelsControllerQueueResponse(status_code=r.status_code, content_type=content_type)
-        
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.ModelVersionEntity])
-                res.model_version_entity = out
-
-        return res
-
-    
     def samples_controller_create(self, request: operations.SamplesControllerCreateRequest) -> operations.SamplesControllerCreateResponse:
         r"""Upload Image Samples
         Upload one or multiple image sample to a model.
@@ -317,6 +203,120 @@ class FineTuning:
             if utils.match_content_type(content_type, "application/json"):
                 out = utils.unmarshal_json(r.text, Optional[shared.ModelVersionEntity])
                 res.model_version_entity = out
+
+        return res
+
+    
+    def create_model(self, request: operations.CreateModelRequest) -> operations.CreateModelResponse:
+        r"""Create Model
+        This endpoint will create a new model
+        """
+        
+        base_url = self._server_url
+        
+        url = base_url.removesuffix("/") + "/api/v1/images/models"
+        
+        headers = {}
+        req_content_type, data, json, files = utils.serialize_request_body(request)
+        if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
+            headers["content-type"] = req_content_type
+        if data is None and json is None:
+           raise Exception('request body is required')
+        
+        client = utils.configure_security_client(self._client, request.security)
+        
+        r = client.request("POST", url, data=data, json=json, files=files, headers=headers)
+        content_type = r.headers.get("Content-Type")
+
+        res = operations.CreateModelResponse(status_code=r.status_code, content_type=content_type)
+        
+        if r.status_code == 200:
+            if utils.match_content_type(content_type, "application/json"):
+                out = utils.unmarshal_json(r.text, Optional[shared.ModelEntity])
+                res.model_entity = out
+
+        return res
+
+    
+    def list_all_models(self, request: operations.ListAllModelsRequest) -> operations.ListAllModelsResponse:
+        r"""List All Models
+        This endpoint will return a list of all models for the workspace.
+        """
+        
+        base_url = self._server_url
+        
+        url = base_url.removesuffix("/") + "/api/v1/images/models"
+        
+        
+        client = utils.configure_security_client(self._client, request.security)
+        
+        r = client.request("GET", url)
+        content_type = r.headers.get("Content-Type")
+
+        res = operations.ListAllModelsResponse(status_code=r.status_code, content_type=content_type)
+        
+        if r.status_code == 200:
+            if utils.match_content_type(content_type, "application/json"):
+                out = utils.unmarshal_json(r.text, Optional[list[shared.ModelEntity]])
+                res.model_entities = out
+
+        return res
+
+    
+    def queue_training_job(self, request: operations.QueueTrainingJobRequest) -> operations.QueueTrainingJobResponse:
+        r"""Queue Training Job
+        This endpoint will queue a new model version to be trained. 
+            
+            After uploading image samples via the samples endpoint. You can use this endpoint to queue a new model version to be trained.
+            
+            Upon completion, you'll be able to query your custom model via the inference endpoint.
+        """
+        
+        base_url = self._server_url
+        
+        url = utils.generate_url(base_url, "/api/v1/images/models/{modelId}/queue", request.path_params)
+        
+        headers = {}
+        req_content_type, data, json, files = utils.serialize_request_body(request)
+        if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
+            headers["content-type"] = req_content_type
+        
+        client = utils.configure_security_client(self._client, request.security)
+        
+        r = client.request("POST", url, data=data, json=json, files=files, headers=headers)
+        content_type = r.headers.get("Content-Type")
+
+        res = operations.QueueTrainingJobResponse(status_code=r.status_code, content_type=content_type)
+        
+        if r.status_code == 200:
+            if utils.match_content_type(content_type, "application/json"):
+                out = utils.unmarshal_json(r.text, Optional[shared.ModelVersionEntity])
+                res.model_version_entity = out
+
+        return res
+
+    
+    def retrieve_single_model(self, request: operations.RetrieveSingleModelRequest) -> operations.RetrieveSingleModelResponse:
+        r"""Retrieve a Single Model
+        This endpoint will return a single model.
+        """
+        
+        base_url = self._server_url
+        
+        url = utils.generate_url(base_url, "/api/v1/images/models/{modelId}", request.path_params)
+        
+        
+        client = utils.configure_security_client(self._client, request.security)
+        
+        r = client.request("GET", url)
+        content_type = r.headers.get("Content-Type")
+
+        res = operations.RetrieveSingleModelResponse(status_code=r.status_code, content_type=content_type)
+        
+        if r.status_code == 200:
+            if utils.match_content_type(content_type, "application/json"):
+                out = utils.unmarshal_json(r.text, Optional[shared.ModelEntity])
+                res.model_entity = out
 
         return res
 
