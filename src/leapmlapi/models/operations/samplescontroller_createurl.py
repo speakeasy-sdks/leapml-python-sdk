@@ -11,6 +11,11 @@ class SamplesControllerCreateURLPathParams:
     
 
 @dataclasses.dataclass
+class SamplesControllerCreateURLQueryParams:
+    return_in_object: Optional[bool] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'returnInObject', 'style': 'form', 'explode': True }})
+    
+
+@dataclasses.dataclass
 class SamplesControllerCreateURLSecurity:
     bearer: shared_security.SchemeBearer = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer' }})
     
@@ -18,6 +23,7 @@ class SamplesControllerCreateURLSecurity:
 @dataclasses.dataclass
 class SamplesControllerCreateURLRequest:
     path_params: SamplesControllerCreateURLPathParams = dataclasses.field()
+    query_params: SamplesControllerCreateURLQueryParams = dataclasses.field()
     request: shared_uploadsamplesviaurldto.UploadSamplesViaURLDto = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     security: SamplesControllerCreateURLSecurity = dataclasses.field()
     

@@ -66,10 +66,11 @@ class FineTuning:
             headers["content-type"] = req_content_type
         if data is None and json is None:
            raise Exception('request body is required')
+        query_params = utils.get_query_params(request.query_params)
         
         client = utils.configure_security_client(self._client, request.security)
         
-        r = client.request("POST", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("POST", url, params=query_params, data=data, json=json, files=files, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.SamplesControllerCreateURLResponse(status_code=r.status_code, content_type=content_type)
