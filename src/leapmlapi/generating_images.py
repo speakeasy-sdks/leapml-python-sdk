@@ -60,10 +60,11 @@ class GeneratingImages:
         
         url = utils.generate_url(base_url, "/api/v1/images/models/{modelId}/inferences", request.path_params)
         
+        query_params = utils.get_query_params(request.query_params)
         
         client = utils.configure_security_client(self._client, request.security)
         
-        r = client.request("GET", url)
+        r = client.request("GET", url, params=query_params)
         content_type = r.headers.get("Content-Type")
 
         res = operations.InferencesControllerFindAllResponse(status_code=r.status_code, content_type=content_type)
