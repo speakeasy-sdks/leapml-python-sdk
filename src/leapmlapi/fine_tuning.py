@@ -20,6 +20,28 @@ class FineTuning:
         self._gen_version = gen_version
 
     
+    def models_controller_remove(self, request: operations.ModelsControllerRemoveRequest) -> operations.ModelsControllerRemoveResponse:
+        r"""Delete a Model
+        """
+        
+        base_url = self._server_url
+        
+        url = utils.generate_url(base_url, "/api/v1/images/models/{modelId}", request.path_params)
+        
+        
+        client = utils.configure_security_client(self._client, request.security)
+        
+        r = client.request("DELETE", url)
+        content_type = r.headers.get("Content-Type")
+
+        res = operations.ModelsControllerRemoveResponse(status_code=r.status_code, content_type=content_type)
+        
+        if r.status_code == 200:
+            pass
+
+        return res
+
+    
     def samples_controller_create(self, request: operations.SamplesControllerCreateRequest) -> operations.SamplesControllerCreateResponse:
         r"""Upload Image Samples
         Upload one or multiple image sample to a model.

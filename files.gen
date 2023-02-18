@@ -3,6 +3,7 @@ src/leapmlapi/generating_images.py
 src/leapmlapi/image_editing.py
 src/leapmlapi/sdk.py
 setup.py
+src/leapmlapi/models/operations/modelscontroller_remove.py
 src/leapmlapi/models/operations/samplescontroller_create.py
 src/leapmlapi/models/operations/samplescontroller_createurl.py
 src/leapmlapi/models/operations/samplescontroller_findall.py
@@ -19,6 +20,7 @@ src/leapmlapi/models/operations/inferencescontroller_findall.py
 src/leapmlapi/models/operations/inferencescontroller_findone.py
 src/leapmlapi/models/operations/inferencescontroller_remove.py
 src/leapmlapi/models/operations/editcontroller_create.py
+src/leapmlapi/models/operations/editcontroller_createwithurl.py
 src/leapmlapi/models/operations/editcontroller_findone.py
 src/leapmlapi/models/operations/__init__.py
 src/leapmlapi/models/shared/trainingsampleentity.py

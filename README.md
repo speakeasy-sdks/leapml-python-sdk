@@ -22,26 +22,20 @@ from leapmlapi.models import operations, shared
 
 s = leapmlapi.LeapMLAPI()
    
-req = operations.SamplesControllerCreateRequest(
-    security=operations.SamplesControllerCreateSecurity(
+req = operations.ModelsControllerRemoveRequest(
+    security=operations.ModelsControllerRemoveSecurity(
         bearer=shared.SchemeBearer(
             authorization="Bearer YOUR_BEARER_TOKEN_HERE",
         ),
     ),
-    path_params=operations.SamplesControllerCreatePathParams(
+    path_params=operations.ModelsControllerRemovePathParams(
         model_id="unde",
-    ),
-    request=operations.SamplesControllerCreateRequestBody(
-        files=operations.SamplesControllerCreateRequestBodyFiles(
-            content="deserunt".encode(),
-            files="porro",
-        ),
     ),
 )
     
-res = s.fine_tuning.samples_controller_create(req)
+res = s.fine_tuning.models_controller_remove(req)
 
-if res.training_sample_entity is not None:
+if res.status_code == 200:
     # handle response
 ```
 <!-- End SDK Example Usage -->
@@ -52,6 +46,7 @@ if res.training_sample_entity is not None:
 
 ### fine_tuning
 
+* `models_controller_remove` - Delete a Model
 * `samples_controller_create` - Upload Image Samples
 * `samples_controller_create_url` - Upload Image Samples Via Url
 * `samples_controller_find_all` - List Image Samples
@@ -74,6 +69,7 @@ if res.training_sample_entity is not None:
 ### image_editing
 
 * `edit_controller_create` - Edit an image
+* `edit_controller_create_with_url` - Edit an image from URL
 * `edit_controller_find_one` - Get an edit
 <!-- End SDK Available Operations -->
 
