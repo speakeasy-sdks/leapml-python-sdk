@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import createmodeldto as shared_createmodeldto
 from ..shared import modelentity as shared_modelentity

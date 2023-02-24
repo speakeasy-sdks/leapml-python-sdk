@@ -52,15 +52,15 @@ class FineTuning:
         url = utils.generate_url(base_url, "/api/v1/images/models/{modelId}/samples", request.path_params)
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
-        if data is None and json is None:
+        if data is None and form is None:
            raise Exception('request body is required')
         
         client = utils.configure_security_client(self._client, request.security)
         
-        r = client.request("POST", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("POST", url, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.SamplesControllerCreateResponse(status_code=r.status_code, content_type=content_type)
@@ -83,16 +83,16 @@ class FineTuning:
         url = utils.generate_url(base_url, "/api/v1/images/models/{modelId}/samples/url", request.path_params)
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
-        if data is None and json is None:
+        if data is None and form is None:
            raise Exception('request body is required')
         query_params = utils.get_query_params(request.query_params)
         
         client = utils.configure_security_client(self._client, request.security)
         
-        r = client.request("POST", url, params=query_params, data=data, json=json, files=files, headers=headers)
+        r = client.request("POST", url, params=query_params, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.SamplesControllerCreateURLResponse(status_code=r.status_code, content_type=content_type)
@@ -240,15 +240,15 @@ class FineTuning:
         url = base_url.removesuffix("/") + "/api/v1/images/models"
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
-        if data is None and json is None:
+        if data is None and form is None:
            raise Exception('request body is required')
         
         client = utils.configure_security_client(self._client, request.security)
         
-        r = client.request("POST", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("POST", url, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.CreateModelResponse(status_code=r.status_code, content_type=content_type)
@@ -301,13 +301,13 @@ class FineTuning:
         url = utils.generate_url(base_url, "/api/v1/images/models/{modelId}/queue", request.path_params)
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
         
         client = utils.configure_security_client(self._client, request.security)
         
-        r = client.request("POST", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("POST", url, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.QueueTrainingJobResponse(status_code=r.status_code, content_type=content_type)
