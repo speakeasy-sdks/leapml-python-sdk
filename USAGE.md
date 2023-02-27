@@ -5,22 +5,20 @@ from leapmlapi.models import operations, shared
 
 s = leapmlapi.LeapMLAPI()
    
-req = operations.ModelsControllerCreateRequest(
-    security=operations.ModelsControllerCreateSecurity(
+req = operations.ModelsControllerRemoveRequest(
+    security=operations.ModelsControllerRemoveSecurity(
         bearer=shared.SchemeBearer(
             authorization="Bearer YOUR_BEARER_TOKEN_HERE",
         ),
     ),
-    request=shared.CreateModelDto(
-        subject_identifier="unde",
-        subject_keyword="deserunt",
-        title="porro",
+    path_params=operations.ModelsControllerRemovePathParams(
+        model_id="unde",
     ),
 )
     
-res = s.fine_tuning.models_controller_create(req)
+res = s.fine_tuning.models_controller_remove(req)
 
-if res.model_entity is not None:
+if res.status_code == 200:
     # handle response
 ```
 <!-- End SDK Example Usage -->

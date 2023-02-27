@@ -29,22 +29,20 @@ from leapmlapi.models import operations, shared
 
 s = leapmlapi.LeapMLAPI()
    
-req = operations.ModelsControllerCreateRequest(
-    security=operations.ModelsControllerCreateSecurity(
+req = operations.ModelsControllerRemoveRequest(
+    security=operations.ModelsControllerRemoveSecurity(
         bearer=shared.SchemeBearer(
             authorization="Bearer YOUR_BEARER_TOKEN_HERE",
         ),
     ),
-    request=shared.CreateModelDto(
-        subject_identifier="unde",
-        subject_keyword="deserunt",
-        title="porro",
+    path_params=operations.ModelsControllerRemovePathParams(
+        model_id="unde",
     ),
 )
     
-res = s.fine_tuning.models_controller_create(req)
+res = s.fine_tuning.models_controller_remove(req)
 
-if res.model_entity is not None:
+if res.status_code == 200:
     # handle response
 ```
 <!-- End SDK Example Usage -->
@@ -55,16 +53,18 @@ if res.model_entity is not None:
 
 ### fine_tuning
 
-* `models_controller_create` - Create Model
-* `models_controller_find_all` - List All Models
-* `models_controller_find_one` - Retrieve a Single Model
-* `models_controller_queue` - Queue Training Job
+* `models_controller_remove` - Delete a Model
 * `samples_controller_create` - Upload Image Samples
+* `samples_controller_create_url` - Upload Image Samples Via Url
 * `samples_controller_find_all` - List Image Samples
 * `samples_controller_find_one` - Get Image Sample
 * `samples_controller_remove` - Archive Image Sample
 * `versions_controller_find_all` - List All Model Versions
 * `versions_controller_find_one` - Get Model Version
+* `create_model` - Create Model
+* `list_all_models` - List All Models
+* `queue_training_job` - Queue Training Job
+* `retrieve_single_model` - Retrieve a Single Model
 
 ### generating_images
 
@@ -75,7 +75,8 @@ if res.model_entity is not None:
 
 ### image_editing
 
-* `edit_controller_create` - Edit a photo
+* `edit_controller_create` - Edit an image
+* `edit_controller_create_with_url` - Edit an image from URL
 * `edit_controller_find_one` - Get an edit
 <!-- End SDK Available Operations -->
 

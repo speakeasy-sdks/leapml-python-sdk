@@ -7,6 +7,7 @@ from .modelversionentity import *
 from .security import *
 from .trainingsampleentity import *
 from .trainmodeldto import *
+from .uploadsamplesviaurldto import *
 from .weightsentity import *
 
-__all__ = ["CreateInferenceDto","CreateModelDto","EditEntity","InferenceEntity","ModelEntity","ModelVersionEntity","ModelVersionEntityStatusEnum","SchemeBearer","TrainModelDto","TrainingSampleEntity","WeightsEntity"]
+__all__ = ["CreateInferenceDto","CreateModelDto","EditEntity","InferenceEntity","ModelEntity","ModelVersionEntity","ModelVersionEntityStatusEnum","SchemeBearer","TrainModelDto","TrainingSampleEntity","UploadSamplesViaURLDto","WeightsEntity"]

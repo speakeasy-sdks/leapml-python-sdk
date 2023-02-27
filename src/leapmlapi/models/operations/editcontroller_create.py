@@ -1,21 +1,9 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import editentity as shared_editentity
 from ..shared import security as shared_security
-from dataclasses_json import dataclass_json
-from leapmlapi import utils
 from typing import Optional
 
-
-@dataclass_json
-@dataclasses.dataclass
-class EditControllerCreateRequestBodyBody:
-    prompt: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('prompt') }})
-    image_guidance_scale: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('imageGuidanceScale') }})
-    seed: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('seed') }})
-    steps: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('steps') }})
-    text_guidance_scale: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('textGuidanceScale') }})
-    webhook_url: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('webhookUrl') }})
-    
 
 @dataclasses.dataclass
 class EditControllerCreateRequestBodyFiles:
@@ -25,8 +13,13 @@ class EditControllerCreateRequestBodyFiles:
 
 @dataclasses.dataclass
 class EditControllerCreateRequestBody:
-    body: EditControllerCreateRequestBodyBody = dataclasses.field(metadata={'multipart_form': { 'field_name': 'body', 'json': True }})
     files: EditControllerCreateRequestBodyFiles = dataclasses.field(metadata={'multipart_form': { 'file': True }})
+    prompt: str = dataclasses.field(metadata={'multipart_form': { 'field_name': 'prompt' }})
+    image_guidance_scale: Optional[float] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'imageGuidanceScale' }})
+    seed: Optional[float] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'seed' }})
+    steps: Optional[float] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'steps' }})
+    text_guidance_scale: Optional[float] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'textGuidanceScale' }})
+    webhook_url: Optional[str] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'webhookUrl' }})
     
 
 @dataclasses.dataclass
