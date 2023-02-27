@@ -6,7 +6,7 @@
    <img src="https://img.shields.io/badge/pypi-1.0.0-blue?style=for-the-badge" />
    <img src="https://img.shields.io/badge/python-3.5 | 3.6 | 3.7 | 3.8-blue?style=for-the-badge" />
    <a href="https://docs.leapml.dev/reference/inferencescontroller_create-1"><img src="https://img.shields.io/static/v1?label=Docs&message=API Ref&color=000&style=for-the-badge" /></a>
-   <a href="https://discord.com/channels/1065392526745403502/1065392527198404670"><img src="https://img.shields.io/static/v1?label=Discord&message=65 online&color=7289da&style=for-the-badge" /></a>
+   <a href="https://discord.com/channels/1065392526745403502/1065392527198404670"><img src="https://img.shields.io/static/v1?label=Discord&message=Join&color=7289da&style=for-the-badge" /></a>
 </div>
 
 <!-- Start SDK Installation -->
