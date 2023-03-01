@@ -6,7 +6,7 @@ from .generating_images import GeneratingImages
 from .image_editing import ImageEditing
 
 SERVERS = [
-	"https://api.leapml.dev",
+	"https://api.tryleap.ai",
 ]
 
 
@@ -21,8 +21,8 @@ class LeapMLAPI:
     
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "1.5.2"
-    _gen_version: str = "1.5.4"
+    _sdk_version: str = "1.6.0"
+    _gen_version: str = "1.6.0"
 
     def __init__(self) -> None:
         self._client = requests.Session()
