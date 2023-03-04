@@ -1,9 +1,15 @@
 from __future__ import annotations
 import dataclasses
+import requests
 from ..shared import editentity as shared_editentity
 from ..shared import security as shared_security
 from typing import Optional
 
+
+@dataclasses.dataclass
+class EditControllerCreateSecurity:
+    bearer: shared_security.SchemeBearer = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer' }})
+    
 
 @dataclasses.dataclass
 class EditControllerCreateRequestBodyFiles:
@@ -23,11 +29,6 @@ class EditControllerCreateRequestBody:
     
 
 @dataclasses.dataclass
-class EditControllerCreateSecurity:
-    bearer: shared_security.SchemeBearer = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer' }})
-    
-
-@dataclasses.dataclass
 class EditControllerCreateRequest:
     request: EditControllerCreateRequestBody = dataclasses.field(metadata={'request': { 'media_type': 'multipart/form-data' }})
     security: EditControllerCreateSecurity = dataclasses.field()
@@ -38,4 +39,5 @@ class EditControllerCreateResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     edit_entity: Optional[shared_editentity.EditEntity] = dataclasses.field(default=None)
+    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
     

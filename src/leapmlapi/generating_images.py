@@ -18,8 +18,7 @@ class GeneratingImages:
         self._language = language
         self._sdk_version = sdk_version
         self._gen_version = gen_version
-
-    
+        
     def inferences_controller_create(self, request: operations.InferencesControllerCreateRequest) -> operations.InferencesControllerCreateResponse:
         r"""Generate Image
         This endpoint will generate a new inference for a particular model.
@@ -27,30 +26,29 @@ class GeneratingImages:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/api/v1/images/models/{modelId}/inferences", request.path_params)
+        url = utils.generate_url(base_url, '/api/v1/images/models/{modelId}/inferences', request.path_params)
         
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request)
-        if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
-            headers["content-type"] = req_content_type
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
         if data is None and form is None:
-           raise Exception('request body is required')
+            raise Exception('request body is required')
         
         client = utils.configure_security_client(self._client, request.security)
         
-        r = client.request("POST", url, data=data, files=form, headers=headers)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.InferencesControllerCreateResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.InferencesControllerCreateResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.InferenceEntity])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.InferenceEntity])
                 res.inference_entity = out
 
         return res
 
-    
     def inferences_controller_find_all(self, request: operations.InferencesControllerFindAllRequest) -> operations.InferencesControllerFindAllResponse:
         r"""List Inference Jobs
         Retrieve all inferences for a specific model
@@ -58,23 +56,22 @@ class GeneratingImages:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/api/v1/images/models/{modelId}/inferences", request.path_params)
+        url = utils.generate_url(base_url, '/api/v1/images/models/{modelId}/inferences', request.path_params)
         
         query_params = utils.get_query_params(request.query_params)
         
         client = utils.configure_security_client(self._client, request.security)
         
-        r = client.request("GET", url, params=query_params)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('GET', url, params=query_params)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.InferencesControllerFindAllResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.InferencesControllerFindAllResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
+        if http_res.status_code == 200:
             pass
 
         return res
 
-    
     def inferences_controller_find_one(self, request: operations.InferencesControllerFindOneRequest) -> operations.InferencesControllerFindOneResponse:
         r"""Get Single Inference Job
         This endpoint will retrieve a specific inference for a particular model.
@@ -82,41 +79,40 @@ class GeneratingImages:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/api/v1/images/models/{modelId}/inferences/{inferenceId}", request.path_params)
+        url = utils.generate_url(base_url, '/api/v1/images/models/{modelId}/inferences/{inferenceId}', request.path_params)
         
         
         client = utils.configure_security_client(self._client, request.security)
         
-        r = client.request("GET", url)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('GET', url)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.InferencesControllerFindOneResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.InferencesControllerFindOneResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
-            if utils.match_content_type(content_type, "application/json"):
-                out = utils.unmarshal_json(r.text, Optional[shared.InferenceEntity])
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.InferenceEntity])
                 res.inference_entity = out
 
         return res
 
-    
     def inferences_controller_remove(self, request: operations.InferencesControllerRemoveRequest) -> operations.InferencesControllerRemoveResponse:
         r"""Delete Inference
         """
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, "/api/v1/images/models/{modelId}/inferences/{inferenceId}", request.path_params)
+        url = utils.generate_url(base_url, '/api/v1/images/models/{modelId}/inferences/{inferenceId}', request.path_params)
         
         
         client = utils.configure_security_client(self._client, request.security)
         
-        r = client.request("DELETE", url)
-        content_type = r.headers.get("Content-Type")
+        http_res = client.request('DELETE', url)
+        content_type = http_res.headers.get('Content-Type')
 
-        res = operations.InferencesControllerRemoveResponse(status_code=r.status_code, content_type=content_type)
+        res = operations.InferencesControllerRemoveResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if r.status_code == 200:
+        if http_res.status_code == 200:
             pass
 
         return res

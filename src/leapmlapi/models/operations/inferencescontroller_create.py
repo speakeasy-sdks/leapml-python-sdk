@@ -1,5 +1,6 @@
 from __future__ import annotations
 import dataclasses
+import requests
 from ..shared import createinferencedto as shared_createinferencedto
 from ..shared import inferenceentity as shared_inferenceentity
 from ..shared import security as shared_security
@@ -7,13 +8,13 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class InferencesControllerCreatePathParams:
-    model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
+class InferencesControllerCreateSecurity:
+    bearer: shared_security.SchemeBearer = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer' }})
     
 
 @dataclasses.dataclass
-class InferencesControllerCreateSecurity:
-    bearer: shared_security.SchemeBearer = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer' }})
+class InferencesControllerCreatePathParams:
+    model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass
@@ -28,4 +29,5 @@ class InferencesControllerCreateResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     inference_entity: Optional[shared_inferenceentity.InferenceEntity] = dataclasses.field(default=None)
+    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
     
