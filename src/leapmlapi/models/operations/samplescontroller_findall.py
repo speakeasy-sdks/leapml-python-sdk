@@ -1,6 +1,6 @@
 from __future__ import annotations
 import dataclasses
-import requests
+import requests as requests_http
 from ..shared import security as shared_security
 from ..shared import trainingsampleentity as shared_trainingsampleentity
 from typing import Optional
@@ -26,6 +26,6 @@ class SamplesControllerFindAllRequest:
 class SamplesControllerFindAllResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     training_sample_entities: Optional[list[shared_trainingsampleentity.TrainingSampleEntity]] = dataclasses.field(default=None)
     

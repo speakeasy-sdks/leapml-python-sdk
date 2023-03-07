@@ -1,6 +1,6 @@
 from __future__ import annotations
 import dataclasses
-import requests
+import requests as requests_http
 from ..shared import modelversionentity as shared_modelversionentity
 from ..shared import security as shared_security
 from typing import Optional
@@ -28,5 +28,5 @@ class VersionsControllerFindOneResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     model_version_entity: Optional[shared_modelversionentity.ModelVersionEntity] = dataclasses.field(default=None)
-    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
