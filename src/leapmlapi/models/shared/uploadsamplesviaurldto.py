@@ -7,5 +7,5 @@ from leapmlapi import utils
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class UploadSamplesViaURLDto:
-    images: list[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('images') }})
+    images: list[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('images') }})
     

@@ -8,7 +8,7 @@ from typing import Optional
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateModelDto:
-    subject_keyword: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('subjectKeyword') }})
-    title: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('title') }})
-    subject_identifier: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('subjectIdentifier'), 'exclude': lambda f: f is None }})
+    subject_keyword: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subjectKeyword') }})
+    title: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('title') }})
+    subject_identifier: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subjectIdentifier'), 'exclude': lambda f: f is None }})
     
