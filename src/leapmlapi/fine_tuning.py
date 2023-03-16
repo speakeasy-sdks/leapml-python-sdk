@@ -25,7 +25,7 @@ class FineTuning:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/api/v1/images/models/{modelId}', request.path_params)
+        url = utils.generate_url(operations.ModelsControllerRemovePathParams, base_url, '/api/v1/images/models/{modelId}', request.path_params)
         
         
         client = utils.configure_security_client(self._client, request.security)
@@ -47,10 +47,10 @@ class FineTuning:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/api/v1/images/models/{modelId}/samples', request.path_params)
+        url = utils.generate_url(operations.SamplesControllerCreatePathParams, base_url, '/api/v1/images/models/{modelId}/samples', request.path_params)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -77,15 +77,15 @@ class FineTuning:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/api/v1/images/models/{modelId}/samples/url', request.path_params)
+        url = utils.generate_url(operations.SamplesControllerCreateURLPathParams, base_url, '/api/v1/images/models/{modelId}/samples/url', request.path_params)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.SamplesControllerCreateURLQueryParams, request.query_params)
         
         client = utils.configure_security_client(self._client, request.security)
         
@@ -108,7 +108,7 @@ class FineTuning:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/api/v1/images/models/{modelId}/samples', request.path_params)
+        url = utils.generate_url(operations.SamplesControllerFindAllPathParams, base_url, '/api/v1/images/models/{modelId}/samples', request.path_params)
         
         
         client = utils.configure_security_client(self._client, request.security)
@@ -132,7 +132,7 @@ class FineTuning:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/api/v1/images/models/{modelId}/samples/{sampleId}', request.path_params)
+        url = utils.generate_url(operations.SamplesControllerFindOnePathParams, base_url, '/api/v1/images/models/{modelId}/samples/{sampleId}', request.path_params)
         
         
         client = utils.configure_security_client(self._client, request.security)
@@ -156,7 +156,7 @@ class FineTuning:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/api/v1/images/models/{modelId}/samples/{sampleId}/archive', request.path_params)
+        url = utils.generate_url(operations.SamplesControllerRemovePathParams, base_url, '/api/v1/images/models/{modelId}/samples/{sampleId}/archive', request.path_params)
         
         
         client = utils.configure_security_client(self._client, request.security)
@@ -180,7 +180,7 @@ class FineTuning:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/api/v1/images/models/{modelId}/versions', request.path_params)
+        url = utils.generate_url(operations.VersionsControllerFindAllPathParams, base_url, '/api/v1/images/models/{modelId}/versions', request.path_params)
         
         
         client = utils.configure_security_client(self._client, request.security)
@@ -204,7 +204,7 @@ class FineTuning:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/api/v1/images/models/{modelId}/versions/{versionId}', request.path_params)
+        url = utils.generate_url(operations.VersionsControllerFindOnePathParams, base_url, '/api/v1/images/models/{modelId}/versions/{versionId}', request.path_params)
         
         
         client = utils.configure_security_client(self._client, request.security)
@@ -231,7 +231,7 @@ class FineTuning:
         url = base_url.removesuffix('/') + '/api/v1/images/models'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -260,7 +260,7 @@ class FineTuning:
         
         url = base_url.removesuffix('/') + '/api/v1/images/models'
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListAllModelsQueryParams, request.query_params)
         
         client = utils.configure_security_client(self._client, request.security)
         
@@ -287,10 +287,10 @@ class FineTuning:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/api/v1/images/models/{modelId}/queue', request.path_params)
+        url = utils.generate_url(operations.QueueTrainingJobPathParams, base_url, '/api/v1/images/models/{modelId}/queue', request.path_params)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -315,7 +315,7 @@ class FineTuning:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/api/v1/images/models/{modelId}', request.path_params)
+        url = utils.generate_url(operations.RetrieveSingleModelPathParams, base_url, '/api/v1/images/models/{modelId}', request.path_params)
         
         
         client = utils.configure_security_client(self._client, request.security)

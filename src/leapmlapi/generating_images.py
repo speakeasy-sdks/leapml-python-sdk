@@ -26,10 +26,10 @@ class GeneratingImages:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/api/v1/images/models/{modelId}/inferences', request.path_params)
+        url = utils.generate_url(operations.InferencesControllerCreatePathParams, base_url, '/api/v1/images/models/{modelId}/inferences', request.path_params)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -56,9 +56,9 @@ class GeneratingImages:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/api/v1/images/models/{modelId}/inferences', request.path_params)
+        url = utils.generate_url(operations.InferencesControllerFindAllPathParams, base_url, '/api/v1/images/models/{modelId}/inferences', request.path_params)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.InferencesControllerFindAllQueryParams, request.query_params)
         
         client = utils.configure_security_client(self._client, request.security)
         
@@ -79,7 +79,7 @@ class GeneratingImages:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/api/v1/images/models/{modelId}/inferences/{inferenceId}', request.path_params)
+        url = utils.generate_url(operations.InferencesControllerFindOnePathParams, base_url, '/api/v1/images/models/{modelId}/inferences/{inferenceId}', request.path_params)
         
         
         client = utils.configure_security_client(self._client, request.security)
@@ -102,7 +102,7 @@ class GeneratingImages:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/api/v1/images/models/{modelId}/inferences/{inferenceId}', request.path_params)
+        url = utils.generate_url(operations.InferencesControllerRemovePathParams, base_url, '/api/v1/images/models/{modelId}/inferences/{inferenceId}', request.path_params)
         
         
         client = utils.configure_security_client(self._client, request.security)

@@ -29,7 +29,7 @@ class ImageEditing:
         url = base_url.removesuffix('/') + '/api/v1/images/edit'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -59,7 +59,7 @@ class ImageEditing:
         url = base_url.removesuffix('/') + '/api/v1/images/edit/url'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -86,7 +86,7 @@ class ImageEditing:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/api/v1/images/edit/{editId}', request.path_params)
+        url = utils.generate_url(operations.EditControllerFindOnePathParams, base_url, '/api/v1/images/edit/{editId}', request.path_params)
         
         
         client = utils.configure_security_client(self._client, request.security)
