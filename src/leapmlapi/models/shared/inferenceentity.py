@@ -26,5 +26,6 @@ class InferenceEntity:
     seed: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('seed') }})  
     state: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('state') }})  
     steps: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('steps') }})  
+    upscaling_option: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('upscalingOption') }})  
     width: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('width') }})  
     

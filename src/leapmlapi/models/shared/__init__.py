@@ -12,4 +12,4 @@ from .trainmodeldto import *
 from .uploadsamplesviaurldto import *
 from .weightsentity import *
 
-__all__ = ["CreateInferenceDto","CreateModelDto","EditEntity","InferenceEntity","ModelEntity","ModelVersionEntity","ModelVersionEntityStatusEnum","SchemeBearer","TrainModelDto","TrainingSampleEntity","UploadSamplesViaURLDto","WeightsEntity"]
+__all__ = ["CreateInferenceDto","CreateInferenceDtoUpscaleByEnum","CreateModelDto","EditEntity","InferenceEntity","ModelEntity","ModelVersionEntity","ModelVersionEntityStatusEnum","SchemeBearer","TrainModelDto","TrainingSampleEntity","UploadSamplesViaURLDto","WeightsEntity"]

@@ -13,7 +13,7 @@
 ## SDK Installation
 
 ```bash
-pip install leapml
+pip install git+<UNSET>.git
 ```
 <!-- End SDK Installation -->
 
