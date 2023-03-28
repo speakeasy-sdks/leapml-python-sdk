@@ -11,6 +11,8 @@ from typing import Optional
 @dataclasses.dataclass
 class TrainModelDto:
     
+    base_weights_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('baseWeightsId'), 'exclude': lambda f: f is None }})
+    r"""The ID of the weights to use for training - defaults to Stable Diffusion v1.5 weights. Check the pretrained models page for a list of available weights."""  
     webhook_url: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('webhookUrl'), 'exclude': lambda f: f is None }})
     r"""An optional webhook URL that will be called when the model is trained."""  
     
