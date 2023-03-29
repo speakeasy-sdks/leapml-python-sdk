@@ -8,7 +8,7 @@ from leapmlapi import utils
 from typing import Optional
 
 class CreateInferenceDtoUpscaleByEnum(str, Enum):
-    r"""Optionally upscale the generated images. This will make the images look more realistic. The default is 1x, which means no upscaling. The maximum is 4x."""
+    r"""Optionally upscale the generated images. This will make the images look more realistic. The default is x1, which means no upscaling. The maximum is x4."""
     X1 = "x1"
     X2 = "x2"
     X4 = "x4"
@@ -37,7 +37,7 @@ class CreateInferenceDto:
     steps: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('steps'), 'exclude': lambda f: f is None }})
     r"""The number of steps to use for the inference."""  
     upscale_by: Optional[CreateInferenceDtoUpscaleByEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('upscaleBy'), 'exclude': lambda f: f is None }})
-    r"""Optionally upscale the generated images. This will make the images look more realistic. The default is 1x, which means no upscaling. The maximum is 4x."""  
+    r"""Optionally upscale the generated images. This will make the images look more realistic. The default is x1, which means no upscaling. The maximum is x4."""  
     version: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('version'), 'exclude': lambda f: f is None }})
     r"""The version of the model to use for the inference. If not provided will default to latest."""  
     webhook_url: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('webhookUrl'), 'exclude': lambda f: f is None }})
