@@ -11,6 +11,8 @@ class CreateModelDtoSubjectTypeEnum(str, Enum):
     r"""The subject type - what the underlying model is learning. Defaults to \"person.\""""
     ANIMAL = "Animal"
     BOY = "Boy"
+    BUSINESSMAN = "Businessman"
+    BUSINESSWOMAN = "Businesswoman"
     CAT = "Cat"
     DOG = "Dog"
     GIRL = "Girl"
