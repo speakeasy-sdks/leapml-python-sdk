@@ -4,14 +4,13 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import editentity as shared_editentity
-from ..shared import security as shared_security
 from typing import Optional
 
 
 @dataclasses.dataclass
 class EditControllerCreateSecurity:
     
-    bearer: shared_security.SchemeBearer = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer' }})  
+    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})  
     
 
 @dataclasses.dataclass
@@ -38,13 +37,6 @@ class EditControllerCreateRequestBody:
     r"""How much to weight the text guidance"""  
     webhook_url: Optional[str] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'webhookUrl' }})
     r"""An optional URL to ping with the status when the edit is complete or failed"""  
-    
-
-@dataclasses.dataclass
-class EditControllerCreateRequest:
-    
-    request: EditControllerCreateRequestBody = dataclasses.field(metadata={'request': { 'media_type': 'multipart/form-data' }})  
-    security: EditControllerCreateSecurity = dataclasses.field()  
     
 
 @dataclasses.dataclass

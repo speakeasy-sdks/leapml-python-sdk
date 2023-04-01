@@ -29,7 +29,6 @@ src/leapmlapi/models/operations/editcontroller_create.py
 src/leapmlapi/models/operations/editcontroller_createwithurl.py
 src/leapmlapi/models/operations/editcontroller_findone.py
 src/leapmlapi/models/operations/__init__.py
-src/leapmlapi/models/shared/security.py
 src/leapmlapi/models/shared/trainingsampleentity.py
 src/leapmlapi/models/shared/uploadsamplesviaurldto.py
 src/leapmlapi/models/shared/modelversionentity.py

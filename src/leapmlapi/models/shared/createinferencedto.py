@@ -7,11 +7,19 @@ from enum import Enum
 from leapmlapi import utils
 from typing import Optional
 
+class CreateInferenceDtoSamplerEnum(str, Enum):
+    r"""Choose the sampler used for your inference."""
+    DDIM = 'ddim'
+    DPM_2A = 'dpm_2a'
+    DPM_PLUSPLUS_SDE = 'dpm_plusplus_sde'
+    EULER = 'euler'
+    EULER_A = 'euler_a'
+
 class CreateInferenceDtoUpscaleByEnum(str, Enum):
     r"""Optionally upscale the generated images. This will make the images look more realistic. The default is x1, which means no upscaling. The maximum is x4."""
-    X1 = "x1"
-    X2 = "x2"
-    X4 = "x4"
+    X1 = 'x1'
+    X2 = 'x2'
+    X4 = 'x4'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -32,6 +40,8 @@ class CreateInferenceDto:
     r"""The higher the prompt strength, the closer the generated image will be to the prompt. Must be between 0 and 30."""  
     restore_faces: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('restoreFaces'), 'exclude': lambda f: f is None }})
     r"""Optionally apply face restoration to the generated images. This will make images of faces look more realistic."""  
+    sampler: Optional[CreateInferenceDtoSamplerEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sampler'), 'exclude': lambda f: f is None }})
+    r"""Choose the sampler used for your inference."""  
     seed: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('seed'), 'exclude': lambda f: f is None }})
     r"""The seed to use for the inference. Must be a positive integer."""  
     steps: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('steps'), 'exclude': lambda f: f is None }})

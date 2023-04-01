@@ -8,18 +8,18 @@ from leapmlapi import utils
 from typing import Optional
 
 class CreateModelDtoSubjectTypeEnum(str, Enum):
-    r"""The subject type - what the underlying model is learning. Defaults to \"person.\""""
-    ANIMAL = "Animal"
-    BOY = "Boy"
-    BUSINESSMAN = "Businessman"
-    BUSINESSWOMAN = "Businesswoman"
-    CAT = "Cat"
-    DOG = "Dog"
-    GIRL = "Girl"
-    MAN = "Man"
-    PERSON = "Person"
-    STYLE = "Style"
-    WOMAN = "Woman"
+    r"""The subject type - what the underlying model is learning. Defaults to \\"person.\\" """
+    ANIMAL = 'Animal'
+    BOY = 'Boy'
+    BUSINESSMAN = 'Businessman'
+    BUSINESSWOMAN = 'Businesswoman'
+    CAT = 'Cat'
+    DOG = 'Dog'
+    GIRL = 'Girl'
+    MAN = 'Man'
+    PERSON = 'Person'
+    STYLE = 'Style'
+    WOMAN = 'Woman'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -33,5 +33,5 @@ class CreateModelDto:
     subject_identifier: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subjectIdentifier'), 'exclude': lambda f: f is None }})
     r"""A random string that will replace the subject keyword at the time of inference. If not provided, a random string will be automatically generated."""  
     subject_type: Optional[CreateModelDtoSubjectTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subjectType'), 'exclude': lambda f: f is None }})
-    r"""The subject type - what the underlying model is learning. Defaults to \"person.\""""  
+    r"""The subject type - what the underlying model is learning. Defaults to \\"person.\\" """  
     

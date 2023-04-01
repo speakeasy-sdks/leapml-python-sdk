@@ -4,7 +4,6 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import modelversionentity as shared_modelversionentity
-from ..shared import security as shared_security
 from ..shared import trainmodeldto as shared_trainmodeldto
 from typing import Optional
 
@@ -12,22 +11,15 @@ from typing import Optional
 @dataclasses.dataclass
 class QueueTrainingJobSecurity:
     
-    bearer: shared_security.SchemeBearer = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer' }})  
-    
-
-@dataclasses.dataclass
-class QueueTrainingJobPathParams:
-    
-    model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
-    r"""The ID of the model to queue."""  
+    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})  
     
 
 @dataclasses.dataclass
 class QueueTrainingJobRequest:
     
-    path_params: QueueTrainingJobPathParams = dataclasses.field()  
-    security: QueueTrainingJobSecurity = dataclasses.field()  
-    request: Optional[shared_trainmodeldto.TrainModelDto] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})  
+    model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
+    r"""The ID of the model to queue."""  
+    train_model_dto: Optional[shared_trainmodeldto.TrainModelDto] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})  
     
 
 @dataclasses.dataclass

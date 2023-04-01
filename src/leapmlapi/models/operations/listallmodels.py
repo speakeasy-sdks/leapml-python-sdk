@@ -4,29 +4,21 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import modelentity as shared_modelentity
-from ..shared import security as shared_security
 from typing import Optional
 
 
 @dataclasses.dataclass
 class ListAllModelsSecurity:
     
-    bearer: Optional[shared_security.SchemeBearer] = dataclasses.field(default=None, metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer' }})  
-    bearer1: Optional[shared_security.SchemeBearer] = dataclasses.field(default=None, metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer' }})  
-    
-
-@dataclasses.dataclass
-class ListAllModelsQueryParams:
-    
-    return_in_object: Optional[bool] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'returnInObject', 'style': 'form', 'explode': True }})
-    r"""Whether to return the sample in the response as an object. Will return array if false."""  
+    bearer: Optional[str] = dataclasses.field(default=None, metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})  
+    bearer1: Optional[str] = dataclasses.field(default=None, metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})  
     
 
 @dataclasses.dataclass
 class ListAllModelsRequest:
     
-    query_params: ListAllModelsQueryParams = dataclasses.field()  
-    security: ListAllModelsSecurity = dataclasses.field()  
+    return_in_object: Optional[bool] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'returnInObject', 'style': 'form', 'explode': True }})
+    r"""Whether to return the sample in the response as an object. Will return array if false."""  
     
 
 @dataclasses.dataclass

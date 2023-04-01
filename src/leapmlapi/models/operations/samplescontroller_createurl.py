@@ -3,7 +3,6 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import security as shared_security
 from ..shared import trainingsampleentity as shared_trainingsampleentity
 from ..shared import uploadsamplesviaurldto as shared_uploadsamplesviaurldto
 from typing import Optional
@@ -12,30 +11,17 @@ from typing import Optional
 @dataclasses.dataclass
 class SamplesControllerCreateURLSecurity:
     
-    bearer: shared_security.SchemeBearer = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer' }})  
-    
-
-@dataclasses.dataclass
-class SamplesControllerCreateURLPathParams:
-    
-    model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
-    r"""The ID of the model to upload samples to."""  
-    
-
-@dataclasses.dataclass
-class SamplesControllerCreateURLQueryParams:
-    
-    return_in_object: Optional[bool] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'returnInObject', 'style': 'form', 'explode': True }})
-    r"""Whether to return the sample in the response as an object. Will return array if false."""  
+    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})  
     
 
 @dataclasses.dataclass
 class SamplesControllerCreateURLRequest:
     
-    path_params: SamplesControllerCreateURLPathParams = dataclasses.field()  
-    query_params: SamplesControllerCreateURLQueryParams = dataclasses.field()  
-    request: shared_uploadsamplesviaurldto.UploadSamplesViaURLDto = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})  
-    security: SamplesControllerCreateURLSecurity = dataclasses.field()  
+    model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
+    r"""The ID of the model to upload samples to."""  
+    upload_samples_via_url_dto: shared_uploadsamplesviaurldto.UploadSamplesViaURLDto = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})  
+    return_in_object: Optional[bool] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'returnInObject', 'style': 'form', 'explode': True }})
+    r"""Whether to return the sample in the response as an object. Will return array if false."""  
     
 
 @dataclasses.dataclass

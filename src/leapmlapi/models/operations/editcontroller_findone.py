@@ -4,28 +4,20 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import editentity as shared_editentity
-from ..shared import security as shared_security
 from typing import Optional
 
 
 @dataclasses.dataclass
 class EditControllerFindOneSecurity:
     
-    bearer: shared_security.SchemeBearer = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer' }})  
-    
-
-@dataclasses.dataclass
-class EditControllerFindOnePathParams:
-    
-    edit_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'editId', 'style': 'simple', 'explode': False }})
-    r"""The ID of the edit to retrieve."""  
+    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})  
     
 
 @dataclasses.dataclass
 class EditControllerFindOneRequest:
     
-    path_params: EditControllerFindOnePathParams = dataclasses.field()  
-    security: EditControllerFindOneSecurity = dataclasses.field()  
+    edit_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'editId', 'style': 'simple', 'explode': False }})
+    r"""The ID of the edit to retrieve."""  
     
 
 @dataclasses.dataclass

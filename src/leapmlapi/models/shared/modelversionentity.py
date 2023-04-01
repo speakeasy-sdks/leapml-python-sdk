@@ -12,10 +12,10 @@ from leapmlapi import utils
 from marshmallow import fields
 
 class ModelVersionEntityStatusEnum(str, Enum):
-    QUEUED = "queued"
-    PROCESSING = "processing"
-    FINISHED = "finished"
-    FAILED = "failed"
+    QUEUED = 'queued'
+    PROCESSING = 'processing'
+    FINISHED = 'finished'
+    FAILED = 'failed'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -27,5 +27,6 @@ class ModelVersionEntity:
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})  
     model: shared_modelentity.ModelEntity = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})  
     status: ModelVersionEntityStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})  
+    steps: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('steps') }})  
     weights: shared_weightsentity.WeightsEntity = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('weights') }})  
     

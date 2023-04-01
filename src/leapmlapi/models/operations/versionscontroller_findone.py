@@ -4,30 +4,22 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import modelversionentity as shared_modelversionentity
-from ..shared import security as shared_security
 from typing import Optional
 
 
 @dataclasses.dataclass
 class VersionsControllerFindOneSecurity:
     
-    bearer: shared_security.SchemeBearer = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer' }})  
-    
-
-@dataclasses.dataclass
-class VersionsControllerFindOnePathParams:
-    
-    model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
-    r"""The ID of the model to retrieve."""  
-    version_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'versionId', 'style': 'simple', 'explode': False }})
-    r"""The ID of the version to retrieve."""  
+    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})  
     
 
 @dataclasses.dataclass
 class VersionsControllerFindOneRequest:
     
-    path_params: VersionsControllerFindOnePathParams = dataclasses.field()  
-    security: VersionsControllerFindOneSecurity = dataclasses.field()  
+    model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
+    r"""The ID of the model to retrieve."""  
+    version_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'versionId', 'style': 'simple', 'explode': False }})
+    r"""The ID of the version to retrieve."""  
     
 
 @dataclasses.dataclass

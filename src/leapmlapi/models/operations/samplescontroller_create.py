@@ -3,7 +3,6 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import security as shared_security
 from ..shared import trainingsampleentity as shared_trainingsampleentity
 from typing import Optional
 
@@ -11,14 +10,7 @@ from typing import Optional
 @dataclasses.dataclass
 class SamplesControllerCreateSecurity:
     
-    bearer: shared_security.SchemeBearer = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer' }})  
-    
-
-@dataclasses.dataclass
-class SamplesControllerCreatePathParams:
-    
-    model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
-    r"""The ID of the model to upload samples to."""  
+    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})  
     
 
 @dataclasses.dataclass
@@ -38,10 +30,10 @@ class SamplesControllerCreateRequestBody:
 @dataclasses.dataclass
 class SamplesControllerCreateRequest:
     
-    path_params: SamplesControllerCreatePathParams = dataclasses.field()  
-    request: SamplesControllerCreateRequestBody = dataclasses.field(metadata={'request': { 'media_type': 'multipart/form-data' }})
+    model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
+    r"""The ID of the model to upload samples to."""  
+    request_body: SamplesControllerCreateRequestBody = dataclasses.field(metadata={'request': { 'media_type': 'multipart/form-data' }})
     r"""The image samples to upload. Can be one or multiple."""  
-    security: SamplesControllerCreateSecurity = dataclasses.field()  
     
 
 @dataclasses.dataclass

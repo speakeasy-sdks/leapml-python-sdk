@@ -21,7 +21,7 @@ class ImageEditing:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def edit_controller_create(self, request: operations.EditControllerCreateRequest) -> operations.EditControllerCreateResponse:
+    def edit_controller_create(self, request: operations.EditControllerCreateRequestBody, security: operations.EditControllerCreateSecurity) -> operations.EditControllerCreateResponse:
         r"""Edit an image
         Edit an image using just a prompt
         """
@@ -36,7 +36,7 @@ class ImageEditing:
         if data is None and form is None:
             raise Exception('request body is required')
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -50,7 +50,7 @@ class ImageEditing:
 
         return res
 
-    def edit_controller_create_with_url(self, request: operations.EditControllerCreateWithURLRequest) -> operations.EditControllerCreateWithURLResponse:
+    def edit_controller_create_with_url(self, request: operations.EditControllerCreateWithURLRequestBody, security: operations.EditControllerCreateWithURLSecurity) -> operations.EditControllerCreateWithURLResponse:
         r"""Edit an image from URL
         Edit an image using just a prompt
         """
@@ -65,7 +65,7 @@ class ImageEditing:
         if data is None and form is None:
             raise Exception('request body is required')
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -79,16 +79,16 @@ class ImageEditing:
 
         return res
 
-    def edit_controller_find_one(self, request: operations.EditControllerFindOneRequest) -> operations.EditControllerFindOneResponse:
+    def edit_controller_find_one(self, request: operations.EditControllerFindOneRequest, security: operations.EditControllerFindOneSecurity) -> operations.EditControllerFindOneResponse:
         r"""Get an edit
         Get an edit by ID
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.EditControllerFindOnePathParams, base_url, '/api/v1/images/edit/{editId}', request.path_params)
+        url = utils.generate_url(operations.EditControllerFindOneRequest, base_url, '/api/v1/images/edit/{editId}', request)
         
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
         http_res = client.request('GET', url)
         content_type = http_res.headers.get('Content-Type')

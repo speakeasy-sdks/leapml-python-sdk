@@ -4,7 +4,6 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import editentity as shared_editentity
-from ..shared import security as shared_security
 from dataclasses_json import Undefined, dataclass_json
 from leapmlapi import utils
 from typing import Optional
@@ -13,7 +12,7 @@ from typing import Optional
 @dataclasses.dataclass
 class EditControllerCreateWithURLSecurity:
     
-    bearer: shared_security.SchemeBearer = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer' }})  
+    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -34,13 +33,6 @@ class EditControllerCreateWithURLRequestBody:
     r"""How much to weight the text guidance"""  
     webhook_url: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('webhookUrl'), 'exclude': lambda f: f is None }})
     r"""An optional URL to ping with the status when the edit is complete or failed"""  
-    
-
-@dataclasses.dataclass
-class EditControllerCreateWithURLRequest:
-    
-    request: EditControllerCreateWithURLRequestBody = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})  
-    security: EditControllerCreateWithURLSecurity = dataclasses.field()  
     
 
 @dataclasses.dataclass

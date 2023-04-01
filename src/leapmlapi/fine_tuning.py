@@ -21,41 +21,39 @@ class FineTuning:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def models_controller_remove(self, request: operations.ModelsControllerRemoveRequest) -> operations.ModelsControllerRemoveResponse:
+    def models_controller_remove(self, request: operations.ModelsControllerRemoveRequest, security: operations.ModelsControllerRemoveSecurity) -> operations.ModelsControllerRemoveResponse:
         r"""Delete a Model"""
         base_url = self._server_url
         
-        url = utils.generate_url(operations.ModelsControllerRemovePathParams, base_url, '/api/v1/images/models/{modelId}', request.path_params)
+        url = utils.generate_url(operations.ModelsControllerRemoveRequest, base_url, '/api/v1/images/models/{modelId}', request)
         
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
         http_res = client.request('DELETE', url)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ModelsControllerRemoveResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if http_res.status_code == 200:
-            pass
 
         return res
 
-    def samples_controller_create(self, request: operations.SamplesControllerCreateRequest) -> operations.SamplesControllerCreateResponse:
+    def samples_controller_create(self, request: operations.SamplesControllerCreateRequest, security: operations.SamplesControllerCreateSecurity) -> operations.SamplesControllerCreateResponse:
         r"""Upload Image Samples
         Upload one or multiple image sample to a model.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.SamplesControllerCreatePathParams, base_url, '/api/v1/images/models/{modelId}/samples', request.path_params)
+        url = utils.generate_url(operations.SamplesControllerCreateRequest, base_url, '/api/v1/images/models/{modelId}/samples', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'multipart')
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -69,23 +67,23 @@ class FineTuning:
 
         return res
 
-    def samples_controller_create_url(self, request: operations.SamplesControllerCreateURLRequest) -> operations.SamplesControllerCreateURLResponse:
+    def samples_controller_create_url(self, request: operations.SamplesControllerCreateURLRequest, security: operations.SamplesControllerCreateURLSecurity) -> operations.SamplesControllerCreateURLResponse:
         r"""Upload Image Samples Via Url
         Upload one or multiple image sample to a model.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.SamplesControllerCreateURLPathParams, base_url, '/api/v1/images/models/{modelId}/samples/url', request.path_params)
+        url = utils.generate_url(operations.SamplesControllerCreateURLRequest, base_url, '/api/v1/images/models/{modelId}/samples/url', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "upload_samples_via_url_dto", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
-        query_params = utils.get_query_params(operations.SamplesControllerCreateURLQueryParams, request.query_params)
+        query_params = utils.get_query_params(operations.SamplesControllerCreateURLRequest, request)
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
         http_res = client.request('POST', url, params=query_params, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -99,16 +97,16 @@ class FineTuning:
 
         return res
 
-    def samples_controller_find_all(self, request: operations.SamplesControllerFindAllRequest) -> operations.SamplesControllerFindAllResponse:
+    def samples_controller_find_all(self, request: operations.SamplesControllerFindAllRequest, security: operations.SamplesControllerFindAllSecurity) -> operations.SamplesControllerFindAllResponse:
         r"""List Image Samples
         Given a model ID, returns all image samples for that model.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.SamplesControllerFindAllPathParams, base_url, '/api/v1/images/models/{modelId}/samples', request.path_params)
+        url = utils.generate_url(operations.SamplesControllerFindAllRequest, base_url, '/api/v1/images/models/{modelId}/samples', request)
         
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
         http_res = client.request('GET', url)
         content_type = http_res.headers.get('Content-Type')
@@ -122,16 +120,16 @@ class FineTuning:
 
         return res
 
-    def samples_controller_find_one(self, request: operations.SamplesControllerFindOneRequest) -> operations.SamplesControllerFindOneResponse:
+    def samples_controller_find_one(self, request: operations.SamplesControllerFindOneRequest, security: operations.SamplesControllerFindOneSecurity) -> operations.SamplesControllerFindOneResponse:
         r"""Get Image Sample
         Given a model ID and a sample ID, returns the image sample.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.SamplesControllerFindOnePathParams, base_url, '/api/v1/images/models/{modelId}/samples/{sampleId}', request.path_params)
+        url = utils.generate_url(operations.SamplesControllerFindOneRequest, base_url, '/api/v1/images/models/{modelId}/samples/{sampleId}', request)
         
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
         http_res = client.request('GET', url)
         content_type = http_res.headers.get('Content-Type')
@@ -145,16 +143,16 @@ class FineTuning:
 
         return res
 
-    def samples_controller_remove(self, request: operations.SamplesControllerRemoveRequest) -> operations.SamplesControllerRemoveResponse:
+    def samples_controller_remove(self, request: operations.SamplesControllerRemoveRequest, security: operations.SamplesControllerRemoveSecurity) -> operations.SamplesControllerRemoveResponse:
         r"""Archive Image Sample
         Given a model ID and a sample ID, archives the image sample. Archived samples are not used for training.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.SamplesControllerRemovePathParams, base_url, '/api/v1/images/models/{modelId}/samples/{sampleId}/archive', request.path_params)
+        url = utils.generate_url(operations.SamplesControllerRemoveRequest, base_url, '/api/v1/images/models/{modelId}/samples/{sampleId}/archive', request)
         
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
         http_res = client.request('POST', url)
         content_type = http_res.headers.get('Content-Type')
@@ -168,16 +166,16 @@ class FineTuning:
 
         return res
 
-    def versions_controller_find_all(self, request: operations.VersionsControllerFindAllRequest) -> operations.VersionsControllerFindAllResponse:
+    def versions_controller_find_all(self, request: operations.VersionsControllerFindAllRequest, security: operations.VersionsControllerFindAllSecurity) -> operations.VersionsControllerFindAllResponse:
         r"""List All Model Versions
         This endpoint will return a list of all versions of a model including the status of each model.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.VersionsControllerFindAllPathParams, base_url, '/api/v1/images/models/{modelId}/versions', request.path_params)
+        url = utils.generate_url(operations.VersionsControllerFindAllRequest, base_url, '/api/v1/images/models/{modelId}/versions', request)
         
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
         http_res = client.request('GET', url)
         content_type = http_res.headers.get('Content-Type')
@@ -191,16 +189,16 @@ class FineTuning:
 
         return res
 
-    def versions_controller_find_one(self, request: operations.VersionsControllerFindOneRequest) -> operations.VersionsControllerFindOneResponse:
+    def versions_controller_find_one(self, request: operations.VersionsControllerFindOneRequest, security: operations.VersionsControllerFindOneSecurity) -> operations.VersionsControllerFindOneResponse:
         r"""Get Model Version
         This endpoint will return a version of a model including the status of the model.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.VersionsControllerFindOnePathParams, base_url, '/api/v1/images/models/{modelId}/versions/{versionId}', request.path_params)
+        url = utils.generate_url(operations.VersionsControllerFindOneRequest, base_url, '/api/v1/images/models/{modelId}/versions/{versionId}', request)
         
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
         http_res = client.request('GET', url)
         content_type = http_res.headers.get('Content-Type')
@@ -214,7 +212,7 @@ class FineTuning:
 
         return res
 
-    def create_model(self, request: operations.CreateModelRequest) -> operations.CreateModelResponse:
+    def create_model(self, request: shared.CreateModelDto, security: operations.CreateModelSecurity) -> operations.CreateModelResponse:
         r"""Create Model
         This endpoint will create a new model
         """
@@ -229,7 +227,7 @@ class FineTuning:
         if data is None and form is None:
             raise Exception('request body is required')
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -243,7 +241,7 @@ class FineTuning:
 
         return res
 
-    def list_all_models(self, request: operations.ListAllModelsRequest) -> operations.ListAllModelsResponse:
+    def list_all_models(self, request: operations.ListAllModelsRequest, security: operations.ListAllModelsSecurity) -> operations.ListAllModelsResponse:
         r"""List All Models
         This endpoint will return a list of all models for the workspace.
         """
@@ -251,9 +249,9 @@ class FineTuning:
         
         url = base_url.removesuffix('/') + '/api/v1/images/models'
         
-        query_params = utils.get_query_params(operations.ListAllModelsQueryParams, request.query_params)
+        query_params = utils.get_query_params(operations.ListAllModelsRequest, request)
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
         http_res = client.request('GET', url, params=query_params)
         content_type = http_res.headers.get('Content-Type')
@@ -267,7 +265,7 @@ class FineTuning:
 
         return res
 
-    def queue_training_job(self, request: operations.QueueTrainingJobRequest) -> operations.QueueTrainingJobResponse:
+    def queue_training_job(self, request: operations.QueueTrainingJobRequest, security: operations.QueueTrainingJobSecurity) -> operations.QueueTrainingJobResponse:
         r"""Queue Training Job
         This endpoint will queue a new model version to be trained. 
             
@@ -277,14 +275,14 @@ class FineTuning:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.QueueTrainingJobPathParams, base_url, '/api/v1/images/models/{modelId}/queue', request.path_params)
+        url = utils.generate_url(operations.QueueTrainingJobRequest, base_url, '/api/v1/images/models/{modelId}/queue', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "train_model_dto", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
         http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
@@ -298,16 +296,16 @@ class FineTuning:
 
         return res
 
-    def retrieve_single_model(self, request: operations.RetrieveSingleModelRequest) -> operations.RetrieveSingleModelResponse:
+    def retrieve_single_model(self, request: operations.RetrieveSingleModelRequest, security: operations.RetrieveSingleModelSecurity) -> operations.RetrieveSingleModelResponse:
         r"""Retrieve a Single Model
         This endpoint will return a single model.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.RetrieveSingleModelPathParams, base_url, '/api/v1/images/models/{modelId}', request.path_params)
+        url = utils.generate_url(operations.RetrieveSingleModelRequest, base_url, '/api/v1/images/models/{modelId}', request)
         
         
-        client = utils.configure_security_client(self._client, request.security)
+        client = utils.configure_security_client(self._client, security)
         
         http_res = client.request('GET', url)
         content_type = http_res.headers.get('Content-Type')

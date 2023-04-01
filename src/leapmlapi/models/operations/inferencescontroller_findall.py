@@ -3,36 +3,26 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import security as shared_security
 from typing import Optional
 
 
 @dataclasses.dataclass
 class InferencesControllerFindAllSecurity:
     
-    bearer: shared_security.SchemeBearer = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer' }})  
-    
-
-@dataclasses.dataclass
-class InferencesControllerFindAllPathParams:
-    
-    model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
-    r"""The ID of the model to retrieve inferences for."""  
-    
-
-@dataclasses.dataclass
-class InferencesControllerFindAllQueryParams:
-    
-    only_finished: Optional[bool] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'onlyFinished', 'style': 'form', 'explode': True }})
-    r"""If set to true, only finished inferences will be returned. If set to false or not set, all inference jobs will be returned."""  
+    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})  
     
 
 @dataclasses.dataclass
 class InferencesControllerFindAllRequest:
     
-    path_params: InferencesControllerFindAllPathParams = dataclasses.field()  
-    query_params: InferencesControllerFindAllQueryParams = dataclasses.field()  
-    security: InferencesControllerFindAllSecurity = dataclasses.field()  
+    model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
+    r"""The ID of the model to retrieve inferences for."""  
+    only_finished: Optional[bool] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'onlyFinished', 'style': 'form', 'explode': True }})
+    r"""If set to true, only finished inferences will be returned. If set to false or not set, all inference jobs will be returned."""  
+    page: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'page', 'style': 'form', 'explode': True }})
+    r"""The page to request."""  
+    page_size: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'pageSize', 'style': 'form', 'explode': True }})
+    r"""The number of items to return per page."""  
     
 
 @dataclasses.dataclass

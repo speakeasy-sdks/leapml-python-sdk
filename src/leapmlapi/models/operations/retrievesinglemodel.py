@@ -4,28 +4,20 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import modelentity as shared_modelentity
-from ..shared import security as shared_security
 from typing import Optional
 
 
 @dataclasses.dataclass
 class RetrieveSingleModelSecurity:
     
-    bearer: shared_security.SchemeBearer = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer' }})  
-    
-
-@dataclasses.dataclass
-class RetrieveSingleModelPathParams:
-    
-    model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
-    r"""The ID of the model to retrieve."""  
+    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})  
     
 
 @dataclasses.dataclass
 class RetrieveSingleModelRequest:
     
-    path_params: RetrieveSingleModelPathParams = dataclasses.field()  
-    security: RetrieveSingleModelSecurity = dataclasses.field()  
+    model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
+    r"""The ID of the model to retrieve."""  
     
 
 @dataclasses.dataclass

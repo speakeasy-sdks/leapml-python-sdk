@@ -4,30 +4,22 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ..shared import inferenceentity as shared_inferenceentity
-from ..shared import security as shared_security
 from typing import Optional
 
 
 @dataclasses.dataclass
 class InferencesControllerFindOneSecurity:
     
-    bearer: shared_security.SchemeBearer = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer' }})  
-    
-
-@dataclasses.dataclass
-class InferencesControllerFindOnePathParams:
-    
-    inference_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'inferenceId', 'style': 'simple', 'explode': False }})
-    r"""The ID of the inference to retrieve."""  
-    model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
-    r"""The ID of the model to retrieve inferences for."""  
+    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})  
     
 
 @dataclasses.dataclass
 class InferencesControllerFindOneRequest:
     
-    path_params: InferencesControllerFindOnePathParams = dataclasses.field()  
-    security: InferencesControllerFindOneSecurity = dataclasses.field()  
+    inference_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'inferenceId', 'style': 'simple', 'explode': False }})
+    r"""The ID of the inference to retrieve."""  
+    model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
+    r"""The ID of the model to retrieve inferences for."""  
     
 
 @dataclasses.dataclass
