@@ -1,6 +1,7 @@
 src/leapmlapi/fine_tuning.py
 src/leapmlapi/generating_images.py
 src/leapmlapi/image_editing.py
+src/leapmlapi/projects.py
 src/leapmlapi/sdk.py
 pylintrc
 setup.py
@@ -28,6 +29,7 @@ src/leapmlapi/models/operations/inferencescontroller_remove.py
 src/leapmlapi/models/operations/editcontroller_create.py
 src/leapmlapi/models/operations/editcontroller_createwithurl.py
 src/leapmlapi/models/operations/editcontroller_findone.py
+src/leapmlapi/models/operations/projectscontroller_remove.py
 src/leapmlapi/models/operations/__init__.py
 src/leapmlapi/models/shared/trainingsampleentity.py
 src/leapmlapi/models/shared/uploadsamplesviaurldto.py

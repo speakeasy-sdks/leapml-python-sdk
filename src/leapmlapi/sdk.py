@@ -5,6 +5,7 @@ from . import utils
 from .fine_tuning import FineTuning
 from .generating_images import GeneratingImages
 from .image_editing import ImageEditing
+from .projects import Projects
 
 SERVERS = [
     "https://api.tryleap.ai",
@@ -17,12 +18,13 @@ class LeapMLAPI:
     fine_tuning: FineTuning
     generating_images: GeneratingImages
     image_editing: ImageEditing
+    projects: Projects
 
     _client: requests_http.Session
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "1.15.2"
+    _sdk_version: str = "1.15.3"
     _gen_version: str = "2.16.7"
 
     def __init__(self,
@@ -76,6 +78,15 @@ class LeapMLAPI:
         )
         
         self.image_editing = ImageEditing(
+            self._client,
+            self._security_client,
+            self._server_url,
+            self._language,
+            self._sdk_version,
+            self._gen_version
+        )
+        
+        self.projects = Projects(
             self._client,
             self._security_client,
             self._server_url,
