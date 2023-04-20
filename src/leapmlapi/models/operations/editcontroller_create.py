@@ -27,14 +27,14 @@ class EditControllerCreateRequestBody:
     r"""The image to upload"""  
     prompt: str = dataclasses.field(metadata={'multipart_form': { 'field_name': 'prompt' }})
     r"""A statement explaining what edit to perform to the image"""  
-    image_guidance_scale: Optional[float] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'imageGuidanceScale' }})
-    r"""How much to weight the image guidance"""  
+    negative_prompt: Optional[str] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'negativePrompt' }})
+    r"""A statement explaining what to avoid in the image"""  
+    number_of_images: Optional[float] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'numberOfImages' }})
+    r"""Number of images to generate"""  
     seed: Optional[float] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'seed' }})
     r"""The seed to use for the random number generator"""  
     steps: Optional[float] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'steps' }})
     r"""How many steps to take"""  
-    text_guidance_scale: Optional[float] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'textGuidanceScale' }})
-    r"""How much to weight the text guidance"""  
     webhook_url: Optional[str] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'webhookUrl' }})
     r"""An optional URL to ping with the status when the edit is complete or failed"""  
     
