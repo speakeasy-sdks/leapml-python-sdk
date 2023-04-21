@@ -24,8 +24,8 @@ class LeapMLAPI:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "1.17.0"
-    _gen_version: str = "2.18.2"
+    _sdk_version: str = "1.17.1"
+    _gen_version: str = "2.19.1"
 
     def __init__(self,
                  server_url: str = None,
