@@ -287,3 +287,9 @@ Based on:
 Based on:
 - OpenAPI Doc 1.0 https://api.leapml.dev/api-json
 - Speakeasy CLI 1.23.1 https://github.com/speakeasy-api/speakeasy
+
+## 2023-04-27 01:19:32
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.25.1 https://github.com/speakeasy-api/speakeasy
