@@ -12,9 +12,12 @@ from typing import Optional
 class TrainModelDto:
     
     base_weights_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('baseWeightsId') }})
-    r"""The ID of the weights to use for training - defaults to Stable Diffusion v1.5 weights. Check the pretrained models page for a list of available weights."""  
+
+    r"""The ID of the weights to use for training - defaults to Stable Diffusion v1.5 weights. Check the pretrained models page for a list of available weights."""
     steps: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('steps'), 'exclude': lambda f: f is None }})
-    r"""The number of steps your model will be trained for. By default, this is set to 100 * the number of samples you provided."""  
+
+    r"""The number of steps your model will be trained for. By default, this is set to 100 * the number of samples you provided."""
     webhook_url: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('webhookUrl'), 'exclude': lambda f: f is None }})
-    r"""An optional webhook URL that will be called when the model is trained."""  
+
+    r"""An optional webhook URL that will be called when the model is trained."""
     

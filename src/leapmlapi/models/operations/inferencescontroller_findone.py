@@ -10,24 +10,31 @@ from typing import Optional
 @dataclasses.dataclass
 class InferencesControllerFindOneSecurity:
     
-    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})  
+    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
+
     
 
 @dataclasses.dataclass
 class InferencesControllerFindOneRequest:
     
     inference_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'inferenceId', 'style': 'simple', 'explode': False }})
-    r"""The ID of the inference to retrieve."""  
+
+    r"""The ID of the inference to retrieve."""
     model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
-    r"""The ID of the model to retrieve inferences for."""  
+
+    r"""The ID of the model to retrieve inferences for."""
     
 
 @dataclasses.dataclass
 class InferencesControllerFindOneResponse:
     
-    content_type: str = dataclasses.field()  
-    status_code: int = dataclasses.field()  
+    content_type: str = dataclasses.field()
+
+    status_code: int = dataclasses.field()
+
     inference_entity: Optional[shared_inferenceentity.InferenceEntity] = dataclasses.field(default=None)
-    r"""An inference."""  
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+
+    r"""An inference."""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+
     

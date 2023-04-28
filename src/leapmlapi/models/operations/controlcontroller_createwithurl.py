@@ -3,35 +3,38 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import modelversionentity as shared_modelversionentity
+from ..shared import bodydtowithurl as shared_bodydtowithurl
+from ..shared import controlentity as shared_controlentity
 from typing import Optional
 
 
 @dataclasses.dataclass
-class VersionsControllerFindAllSecurity:
+class ControlControllerCreateWithURLSecurity:
     
     bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
 
     
 
 @dataclasses.dataclass
-class VersionsControllerFindAllRequest:
+class ControlControllerCreateWithURLRequest:
     
+    body_dto_with_url: shared_bodydtowithurl.BodyDtoWithURL = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
+
     model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
 
-    r"""The ID of the model to retrieve."""
+    r"""The ID of the model to use for the image generation."""
     
 
 @dataclasses.dataclass
-class VersionsControllerFindAllResponse:
+class ControlControllerCreateWithURLResponse:
     
     content_type: str = dataclasses.field()
 
     status_code: int = dataclasses.field()
 
-    model_version_entities: Optional[list[shared_modelversionentity.ModelVersionEntity]] = dataclasses.field(default=None)
+    control_entity: Optional[shared_controlentity.ControlEntity] = dataclasses.field(default=None)
 
-    r"""A list of all versions of a model."""
+    r"""The newly created job."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
 
     

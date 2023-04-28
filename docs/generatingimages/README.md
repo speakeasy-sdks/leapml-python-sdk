@@ -2,14 +2,14 @@
 
 ### Available Operations
 
-* [inferences_controller_create](#inferences_controller_create) - Generate Image
-* [inferences_controller_find_all](#inferences_controller_find_all) - List Inference Jobs
-* [inferences_controller_find_one](#inferences_controller_find_one) - Get Single Inference Job
+* [inferences_controller_create](#inferences_controller_create) - Generate an image using a text prompt
+* [inferences_controller_find_all](#inferences_controller_find_all) - List inference jobs for a model
+* [inferences_controller_find_one](#inferences_controller_find_one) - Get a single inference job
 * [inferences_controller_remove](#inferences_controller_remove) - Delete Inference
 
 ## inferences_controller_create
 
-This endpoint will generate a new inference for a particular model.
+Generate an image using a text prompt. The model used to generate the image is determined by the `modelId` parameter. A job ID is returned that can be used to retrieve the generated image(s).
 
 ### Example Usage
 
@@ -50,7 +50,7 @@ if res.inference_entity is not None:
 
 ## inferences_controller_find_all
 
-Retrieve all inferences for a specific model
+Fetch a list of inference jobs for a particular model.
 
 ### Example Usage
 

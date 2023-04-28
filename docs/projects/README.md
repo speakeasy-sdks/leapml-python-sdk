@@ -18,7 +18,7 @@ s = leapmlapi.LeapMLAPI()
 
 
 req = operations.ProjectsControllerRemoveRequest(
-    project_id="molestiae",
+    project_id="sapiente",
 )
 
 res = s.projects.projects_controller_remove(req, operations.ProjectsControllerRemoveSecurity(

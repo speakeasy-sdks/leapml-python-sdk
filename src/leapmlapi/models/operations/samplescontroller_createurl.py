@@ -11,25 +11,33 @@ from typing import Optional
 @dataclasses.dataclass
 class SamplesControllerCreateURLSecurity:
     
-    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})  
+    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
+
     
 
 @dataclasses.dataclass
 class SamplesControllerCreateURLRequest:
     
     model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
-    r"""The ID of the model to upload samples to."""  
-    upload_samples_via_url_dto: shared_uploadsamplesviaurldto.UploadSamplesViaURLDto = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})  
+
+    r"""The ID of the model to upload samples to."""
+    upload_samples_via_url_dto: shared_uploadsamplesviaurldto.UploadSamplesViaURLDto = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
+
     return_in_object: Optional[bool] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'returnInObject', 'style': 'form', 'explode': True }})
-    r"""Whether to return the sample in the response as an object. Will return array if false."""  
+
+    r"""Whether to return the sample in the response as an object. Will return array if false."""
     
 
 @dataclasses.dataclass
 class SamplesControllerCreateURLResponse:
     
-    content_type: str = dataclasses.field()  
-    status_code: int = dataclasses.field()  
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+    content_type: str = dataclasses.field()
+
+    status_code: int = dataclasses.field()
+
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+
     training_sample_entity: Optional[shared_trainingsampleentity.TrainingSampleEntity] = dataclasses.field(default=None)
-    r"""The newly created sample."""  
+
+    r"""The newly created sample."""
     

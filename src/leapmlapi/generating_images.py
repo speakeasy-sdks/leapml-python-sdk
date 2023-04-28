@@ -22,8 +22,8 @@ class GeneratingImages:
         self._gen_version = gen_version
         
     def inferences_controller_create(self, request: operations.InferencesControllerCreateRequest, security: operations.InferencesControllerCreateSecurity) -> operations.InferencesControllerCreateResponse:
-        r"""Generate Image
-        This endpoint will generate a new inference for a particular model.
+        r"""Generate an image using a text prompt
+        Generate an image using a text prompt. The model used to generate the image is determined by the `modelId` parameter. A job ID is returned that can be used to retrieve the generated image(s).
         """
         base_url = self._server_url
         
@@ -51,8 +51,8 @@ class GeneratingImages:
         return res
 
     def inferences_controller_find_all(self, request: operations.InferencesControllerFindAllRequest, security: operations.InferencesControllerFindAllSecurity) -> operations.InferencesControllerFindAllResponse:
-        r"""List Inference Jobs
-        Retrieve all inferences for a specific model
+        r"""List inference jobs for a model
+        Fetch a list of inference jobs for a particular model.
         """
         base_url = self._server_url
         
@@ -71,7 +71,7 @@ class GeneratingImages:
         return res
 
     def inferences_controller_find_one(self, request: operations.InferencesControllerFindOneRequest, security: operations.InferencesControllerFindOneSecurity) -> operations.InferencesControllerFindOneResponse:
-        r"""Get Single Inference Job
+        r"""Get a single inference job
         This endpoint will retrieve a specific inference for a particular model.
         """
         base_url = self._server_url

@@ -5,41 +5,51 @@ import dataclasses
 import dateutil.parser
 from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
+from enum import Enum
 from leapmlapi import utils
 from marshmallow import fields
+from typing import Optional
+
+class ControlEntityModeEnum(str, Enum):
+    r"""The segmentation mode that should be used when generating the image."""
+    CANNY = 'canny'
+    MLSD = 'mlsd'
+    POSE = 'pose'
+    SCRIBBLE = 'scribble'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class InferenceEntity:
-    r"""Returns the newly created inference."""
+class ControlEntity:
+    r"""The newly generated image."""
     
     created_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('createdAt'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
-
-    height: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('height') }})
 
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
 
     images: list[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('images') }})
 
-    model_id: list[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modelId') }})
+    model_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modelId') }})
 
     negative_prompt: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('negativePrompt') }})
 
     number_of_images: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('numberOfImages') }})
 
-    prompt: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('prompt') }})
+    project_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('projectId') }})
 
-    prompt_strength: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('promptStrength') }})
+    prompt: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('prompt') }})
 
     seed: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('seed') }})
 
-    state: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('state') }})
+    source_image_uri: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceImageUri') }})
+
+    status: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
 
     steps: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('steps') }})
 
-    upscaling_option: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('upscalingOption') }})
+    weights_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('weightsId') }})
 
-    width: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('width') }})
+    mode: Optional[ControlEntityModeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('mode'), 'exclude': lambda f: f is None }})
 
+    r"""The segmentation mode that should be used when generating the image."""
     

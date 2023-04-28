@@ -10,38 +10,48 @@ from typing import Optional
 @dataclasses.dataclass
 class SamplesControllerCreateSecurity:
     
-    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})  
+    bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
+
     
 
 @dataclasses.dataclass
 class SamplesControllerCreateRequestBodyFiles:
     
-    content: bytes = dataclasses.field(metadata={'multipart_form': { 'content': True }})  
-    files: str = dataclasses.field(metadata={'multipart_form': { 'field_name': 'files' }})  
+    content: bytes = dataclasses.field(metadata={'multipart_form': { 'content': True }})
+
+    files: str = dataclasses.field(metadata={'multipart_form': { 'field_name': 'files' }})
+
     
 
 @dataclasses.dataclass
 class SamplesControllerCreateRequestBody:
     r"""The image samples to upload. Can be one or multiple."""
     
-    files: Optional[SamplesControllerCreateRequestBodyFiles] = dataclasses.field(default=None, metadata={'multipart_form': { 'file': True }})  
+    files: Optional[SamplesControllerCreateRequestBodyFiles] = dataclasses.field(default=None, metadata={'multipart_form': { 'file': True }})
+
     
 
 @dataclasses.dataclass
 class SamplesControllerCreateRequest:
     
     model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
-    r"""The ID of the model to upload samples to."""  
+
+    r"""The ID of the model to upload samples to."""
     request_body: SamplesControllerCreateRequestBody = dataclasses.field(metadata={'request': { 'media_type': 'multipart/form-data' }})
-    r"""The image samples to upload. Can be one or multiple."""  
+
+    r"""The image samples to upload. Can be one or multiple."""
     
 
 @dataclasses.dataclass
 class SamplesControllerCreateResponse:
     
-    content_type: str = dataclasses.field()  
-    status_code: int = dataclasses.field()  
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+    content_type: str = dataclasses.field()
+
+    status_code: int = dataclasses.field()
+
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+
     training_sample_entity: Optional[shared_trainingsampleentity.TrainingSampleEntity] = dataclasses.field(default=None)
-    r"""The newly created sample."""  
+
+    r"""The newly created sample."""
     

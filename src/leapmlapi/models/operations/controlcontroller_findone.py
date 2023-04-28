@@ -3,35 +3,38 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import trainingsampleentity as shared_trainingsampleentity
+from ..shared import controlentity as shared_controlentity
 from typing import Optional
 
 
 @dataclasses.dataclass
-class SamplesControllerFindAllSecurity:
+class ControlControllerFindOneSecurity:
     
     bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
 
     
 
 @dataclasses.dataclass
-class SamplesControllerFindAllRequest:
+class ControlControllerFindOneRequest:
     
     model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
 
-    r"""The ID of the model to retrieve."""
+    r"""The ID of the model that the job belongs to."""
+    remix_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'remixId', 'style': 'simple', 'explode': False }})
+
+    r"""The ID of the job to retrieve."""
     
 
 @dataclasses.dataclass
-class SamplesControllerFindAllResponse:
+class ControlControllerFindOneResponse:
     
     content_type: str = dataclasses.field()
 
     status_code: int = dataclasses.field()
 
+    control_entity: Optional[shared_controlentity.ControlEntity] = dataclasses.field(default=None)
+
+    r"""A Remix request object."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
 
-    training_sample_entities: Optional[list[shared_trainingsampleentity.TrainingSampleEntity]] = dataclasses.field(default=None)
-
-    r"""All training samples for a model."""
     
