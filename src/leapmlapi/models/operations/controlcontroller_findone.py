@@ -11,17 +11,14 @@ from typing import Optional
 class ControlControllerFindOneSecurity:
     
     bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
-
     
 
 @dataclasses.dataclass
 class ControlControllerFindOneRequest:
     
     model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
-
     r"""The ID of the model that the job belongs to."""
     remix_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'remixId', 'style': 'simple', 'explode': False }})
-
     r"""The ID of the job to retrieve."""
     
 
@@ -29,12 +26,8 @@ class ControlControllerFindOneRequest:
 class ControlControllerFindOneResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     control_entity: Optional[shared_controlentity.ControlEntity] = dataclasses.field(default=None)
-
     r"""A Remix request object."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

@@ -10,23 +10,18 @@ from typing import Optional
 class InferencesControllerFindAllSecurity:
     
     bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
-
     
 
 @dataclasses.dataclass
 class InferencesControllerFindAllRequest:
     
     model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
-
     r"""The ID of the model to retrieve inferences for."""
     only_finished: Optional[bool] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'onlyFinished', 'style': 'form', 'explode': True }})
-
     r"""If set to true, only finished inferences will be returned. If set to false or not set, all inference jobs will be returned."""
     page: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'page', 'style': 'form', 'explode': True }})
-
     r"""The page to request."""
     page_size: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'pageSize', 'style': 'form', 'explode': True }})
-
     r"""The number of items to return per page."""
     
 
@@ -34,9 +29,6 @@ class InferencesControllerFindAllRequest:
 class InferencesControllerFindAllResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

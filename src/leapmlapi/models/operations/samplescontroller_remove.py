@@ -11,17 +11,14 @@ from typing import Optional
 class SamplesControllerRemoveSecurity:
     
     bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
-
     
 
 @dataclasses.dataclass
 class SamplesControllerRemoveRequest:
     
     model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
-
     r"""The ID of the model that contains the sample."""
     sample_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'sampleId', 'style': 'simple', 'explode': False }})
-
     r"""The ID of the image sample to archive."""
     
 
@@ -29,12 +26,8 @@ class SamplesControllerRemoveRequest:
 class SamplesControllerRemoveResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     training_sample_entity: Optional[shared_trainingsampleentity.TrainingSampleEntity] = dataclasses.field(default=None)
-
     r"""A specific training sample."""
     

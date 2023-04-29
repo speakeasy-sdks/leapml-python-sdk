@@ -11,14 +11,12 @@ from typing import Optional
 class VersionsControllerFindAllSecurity:
     
     bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
-
     
 
 @dataclasses.dataclass
 class VersionsControllerFindAllRequest:
     
     model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
-
     r"""The ID of the model to retrieve."""
     
 
@@ -26,12 +24,8 @@ class VersionsControllerFindAllRequest:
 class VersionsControllerFindAllResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     model_version_entities: Optional[list[shared_modelversionentity.ModelVersionEntity]] = dataclasses.field(default=None)
-
     r"""A list of all versions of a model."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

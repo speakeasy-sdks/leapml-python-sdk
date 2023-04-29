@@ -12,29 +12,22 @@ from typing import Optional
 class QueueTrainingJobSecurity:
     
     bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
-
     
 
 @dataclasses.dataclass
 class QueueTrainingJobRequest:
     
     model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
-
     r"""The ID of the model to queue."""
     train_model_dto: Optional[shared_trainmodeldto.TrainModelDto] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
-
     
 
 @dataclasses.dataclass
 class QueueTrainingJobResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     model_version_entity: Optional[shared_modelversionentity.ModelVersionEntity] = dataclasses.field(default=None)
-
     r"""The model training has been successfully queued."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

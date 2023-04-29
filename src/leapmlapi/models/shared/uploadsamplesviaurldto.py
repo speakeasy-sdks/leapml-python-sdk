@@ -11,6 +11,5 @@ from leapmlapi import utils
 class UploadSamplesViaURLDto:
     
     images: list[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('images') }})
-
     r"""An array of strings containing the URLs of the images to upload."""
     

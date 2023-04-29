@@ -24,32 +24,18 @@ class ControlEntity:
     r"""The newly generated image."""
     
     created_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('createdAt'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
-
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
-
     images: list[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('images') }})
-
     model_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modelId') }})
-
     negative_prompt: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('negativePrompt') }})
-
     number_of_images: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('numberOfImages') }})
-
     project_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('projectId') }})
-
     prompt: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('prompt') }})
-
     seed: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('seed') }})
-
     source_image_uri: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sourceImageUri') }})
-
     status: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
-
     steps: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('steps') }})
-
     weights_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('weightsId') }})
-
     mode: Optional[ControlEntityModeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('mode'), 'exclude': lambda f: f is None }})
-
     r"""The segmentation mode that should be used when generating the image."""
     

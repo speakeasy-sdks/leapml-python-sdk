@@ -20,27 +20,19 @@ class BodyDtoWithURLModeEnum(str, Enum):
 class BodyDtoWithURL:
     
     image_url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('imageUrl') }})
-
     r"""The URL of the image to use as the source image. Make sure the image is public."""
     prompt: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('prompt') }})
-
     r"""A text prompt to use when generating the image."""
     mode: Optional[BodyDtoWithURLModeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('mode'), 'exclude': lambda f: f is None }})
-
     r"""The segmentation mode that should be used when generating the image."""
     negative_prompt: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('negativePrompt'), 'exclude': lambda f: f is None }})
-
     r"""The negative prompt instructs the model on things it should avoid doing."""
     number_of_images: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('numberOfImages'), 'exclude': lambda f: f is None }})
-
     r"""How many images to generate"""
     seed: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('seed'), 'exclude': lambda f: f is None }})
-
     r"""A random seed to use when generating the image. You can use this to generate the same image multiple times."""
     steps: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('steps'), 'exclude': lambda f: f is None }})
-
     r"""How many steps to perform - more steps will take longer, but may produce better results."""
     webhook_url: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('webhookUrl'), 'exclude': lambda f: f is None }})
-
     r"""An optional URL to ping with the status when the edit is complete or failed. This will include the generated images if the job was successful."""
     

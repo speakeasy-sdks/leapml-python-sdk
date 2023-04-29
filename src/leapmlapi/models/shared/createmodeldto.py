@@ -27,15 +27,11 @@ class CreateModelDtoSubjectTypeEnum(str, Enum):
 class CreateModelDto:
     
     subject_keyword: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subjectKeyword') }})
-
     r"""This is the keyword you will use during inference to trigger the specific styles."""
     title: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('title') }})
-
     r"""This is the name of the model. It will be used to identify the model."""
     subject_identifier: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subjectIdentifier'), 'exclude': lambda f: f is None }})
-
     r"""A random string that will replace the subject keyword at the time of inference. If not provided, a random string will be automatically generated."""
     subject_type: Optional[CreateModelDtoSubjectTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subjectType'), 'exclude': lambda f: f is None }})
-
     r"""The subject type - what the underlying model is learning. Defaults to \\"person.\\" """
     
