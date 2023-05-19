@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import controlentity as shared_controlentity
+from ..shared import remixjob as shared_remixjob
 from typing import Optional
 
 
@@ -27,7 +27,7 @@ class ControlControllerFindOneResponse:
     
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    control_entity: Optional[shared_controlentity.ControlEntity] = dataclasses.field(default=None)
-    r"""A Remix request object."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    remix_job: Optional[shared_remixjob.RemixJob] = dataclasses.field(default=None)
+    r"""A Remix request object."""
     

@@ -3,6 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import dateutil.parser
+from ..shared import controlimageentity as shared_controlimageentity
 from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
 from enum import Enum
@@ -10,7 +11,7 @@ from leapmlapi import utils
 from marshmallow import fields
 from typing import Optional
 
-class ControlEntityModeEnum(str, Enum):
+class RemixJobMode(str, Enum):
     r"""The segmentation mode that should be used when generating the image."""
     CANNY = 'canny'
     MLSD = 'mlsd'
@@ -20,12 +21,12 @@ class ControlEntityModeEnum(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ControlEntity:
+class RemixJob:
     r"""The newly generated image."""
     
     created_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('createdAt'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
-    images: list[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('images') }})
+    images: list[shared_controlimageentity.ControlImageEntity] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('images') }})
     model_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('modelId') }})
     negative_prompt: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('negativePrompt') }})
     number_of_images: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('numberOfImages') }})
@@ -36,6 +37,6 @@ class ControlEntity:
     status: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     steps: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('steps') }})
     weights_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('weightsId') }})
-    mode: Optional[ControlEntityModeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('mode'), 'exclude': lambda f: f is None }})
+    mode: Optional[RemixJobMode] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('mode'), 'exclude': lambda f: f is None }})
     r"""The segmentation mode that should be used when generating the image."""
     

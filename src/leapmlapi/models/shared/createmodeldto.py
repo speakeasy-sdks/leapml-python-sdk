@@ -7,7 +7,7 @@ from enum import Enum
 from leapmlapi import utils
 from typing import Optional
 
-class CreateModelDtoSubjectTypeEnum(str, Enum):
+class CreateModelDtoSubjectType(str, Enum):
     r"""The subject type - what the underlying model is learning. Defaults to \\"person.\\" """
     ANIMAL = 'Animal'
     BOY = 'Boy'
@@ -32,6 +32,6 @@ class CreateModelDto:
     r"""This is the name of the model. It will be used to identify the model."""
     subject_identifier: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subjectIdentifier'), 'exclude': lambda f: f is None }})
     r"""A random string that will replace the subject keyword at the time of inference. If not provided, a random string will be automatically generated."""
-    subject_type: Optional[CreateModelDtoSubjectTypeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subjectType'), 'exclude': lambda f: f is None }})
+    subject_type: Optional[CreateModelDtoSubjectType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('subjectType'), 'exclude': lambda f: f is None }})
     r"""The subject type - what the underlying model is learning. Defaults to \\"person.\\" """
     

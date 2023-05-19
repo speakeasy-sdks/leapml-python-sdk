@@ -16,13 +16,12 @@ from leapmlapi.models import operations
 
 s = leapmlapi.LeapMLAPI()
 
-
 req = operations.ProjectsControllerRemoveRequest(
-    project_id="sapiente",
+    project_id='sapiente',
 )
 
 res = s.projects.projects_controller_remove(req, operations.ProjectsControllerRemoveSecurity(
-    bearer="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.status_code == 200:

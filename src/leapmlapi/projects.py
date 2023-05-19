@@ -20,16 +20,19 @@ class Projects:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def projects_controller_remove(self, request: operations.ProjectsControllerRemoveRequest, security: operations.ProjectsControllerRemoveSecurity) -> operations.ProjectsControllerRemoveResponse:
         r"""Delete a Project"""
         base_url = self._server_url
         
         url = utils.generate_url(operations.ProjectsControllerRemoveRequest, base_url, '/api/v1/projects/{projectId}', request)
-        
+        headers = {}
+        headers['Accept'] = '*/*'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
-        http_res = client.request('DELETE', url)
+        http_res = client.request('DELETE', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ProjectsControllerRemoveResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

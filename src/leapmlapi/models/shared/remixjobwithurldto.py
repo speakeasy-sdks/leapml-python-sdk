@@ -7,7 +7,7 @@ from enum import Enum
 from leapmlapi import utils
 from typing import Optional
 
-class BodyDtoWithURLModeEnum(str, Enum):
+class RemixJobWithURLDtoMode(str, Enum):
     r"""The segmentation mode that should be used when generating the image."""
     CANNY = 'canny'
     MLSD = 'mlsd'
@@ -17,13 +17,13 @@ class BodyDtoWithURLModeEnum(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class BodyDtoWithURL:
+class RemixJobWithURLDto:
     
     image_url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('imageUrl') }})
     r"""The URL of the image to use as the source image. Make sure the image is public."""
     prompt: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('prompt') }})
     r"""A text prompt to use when generating the image."""
-    mode: Optional[BodyDtoWithURLModeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('mode'), 'exclude': lambda f: f is None }})
+    mode: Optional[RemixJobWithURLDtoMode] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('mode'), 'exclude': lambda f: f is None }})
     r"""The segmentation mode that should be used when generating the image."""
     negative_prompt: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('negativePrompt'), 'exclude': lambda f: f is None }})
     r"""The negative prompt instructs the model on things it should avoid doing."""

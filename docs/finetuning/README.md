@@ -27,13 +27,12 @@ from leapmlapi.models import operations
 
 s = leapmlapi.LeapMLAPI()
 
-
 req = operations.ModelsControllerRemoveRequest(
-    model_id="provident",
+    model_id='provident',
 )
 
 res = s.fine_tuning.models_controller_remove(req, operations.ModelsControllerRemoveSecurity(
-    bearer="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.status_code == 200:
@@ -52,19 +51,18 @@ from leapmlapi.models import operations
 
 s = leapmlapi.LeapMLAPI()
 
-
 req = operations.SamplesControllerCreateRequest(
     request_body=operations.SamplesControllerCreateRequestBody(
         files=operations.SamplesControllerCreateRequestBodyFiles(
-            content="distinctio".encode(),
-            files="quibusdam",
+            content='distinctio'.encode(),
+            files='quibusdam',
         ),
     ),
-    model_id="unde",
+    model_id='unde',
 )
 
 res = s.fine_tuning.samples_controller_create(req, operations.SamplesControllerCreateSecurity(
-    bearer="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.training_sample_entity is not None:
@@ -83,22 +81,21 @@ from leapmlapi.models import operations, shared
 
 s = leapmlapi.LeapMLAPI()
 
-
 req = operations.SamplesControllerCreateURLRequest(
     upload_samples_via_url_dto=shared.UploadSamplesViaURLDto(
         images=[
-            "corrupti",
-            "illum",
-            "vel",
-            "error",
+            'corrupti',
+            'illum',
+            'vel',
+            'error',
         ],
     ),
-    model_id="deserunt",
+    model_id='deserunt',
     return_in_object=False,
 )
 
 res = s.fine_tuning.samples_controller_create_url(req, operations.SamplesControllerCreateURLSecurity(
-    bearer="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.training_sample_entity is not None:
@@ -117,13 +114,12 @@ from leapmlapi.models import operations
 
 s = leapmlapi.LeapMLAPI()
 
-
 req = operations.SamplesControllerFindAllRequest(
-    model_id="suscipit",
+    model_id='suscipit',
 )
 
 res = s.fine_tuning.samples_controller_find_all(req, operations.SamplesControllerFindAllSecurity(
-    bearer="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.training_sample_entities is not None:
@@ -142,14 +138,13 @@ from leapmlapi.models import operations
 
 s = leapmlapi.LeapMLAPI()
 
-
 req = operations.SamplesControllerFindOneRequest(
-    model_id="iure",
-    sample_id="magnam",
+    model_id='iure',
+    sample_id='magnam',
 )
 
 res = s.fine_tuning.samples_controller_find_one(req, operations.SamplesControllerFindOneSecurity(
-    bearer="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.training_sample_entities is not None:
@@ -168,14 +163,13 @@ from leapmlapi.models import operations
 
 s = leapmlapi.LeapMLAPI()
 
-
 req = operations.SamplesControllerRemoveRequest(
-    model_id="debitis",
-    sample_id="ipsa",
+    model_id='debitis',
+    sample_id='ipsa',
 )
 
 res = s.fine_tuning.samples_controller_remove(req, operations.SamplesControllerRemoveSecurity(
-    bearer="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.training_sample_entity is not None:
@@ -194,13 +188,12 @@ from leapmlapi.models import operations
 
 s = leapmlapi.LeapMLAPI()
 
-
 req = operations.VersionsControllerFindAllRequest(
-    model_id="delectus",
+    model_id='delectus',
 )
 
 res = s.fine_tuning.versions_controller_find_all(req, operations.VersionsControllerFindAllSecurity(
-    bearer="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.model_version_entities is not None:
@@ -219,14 +212,13 @@ from leapmlapi.models import operations
 
 s = leapmlapi.LeapMLAPI()
 
-
 req = operations.VersionsControllerFindOneRequest(
-    model_id="tempora",
-    version_id="suscipit",
+    model_id='tempora',
+    version_id='suscipit',
 )
 
 res = s.fine_tuning.versions_controller_find_one(req, operations.VersionsControllerFindOneSecurity(
-    bearer="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.model_version_entity is not None:
@@ -245,16 +237,15 @@ from leapmlapi.models import operations, shared
 
 s = leapmlapi.LeapMLAPI()
 
-
 req = shared.CreateModelDto(
-    subject_identifier="s2dg3g9sd47sdhj",
-    subject_keyword="@me",
-    subject_type="Dog",
-    title="Cat Model",
+    subject_identifier='s2dg3g9sd47sdhj',
+    subject_keyword='@me',
+    subject_type=shared.CreateModelDtoSubjectType.DOG,
+    title='Cat Model',
 )
 
 res = s.fine_tuning.create_model(req, operations.CreateModelSecurity(
-    bearer="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.model_entity is not None:
@@ -273,13 +264,12 @@ from leapmlapi.models import operations
 
 s = leapmlapi.LeapMLAPI()
 
-
 req = operations.ListAllModelsRequest(
     return_in_object=False,
 )
 
 res = s.fine_tuning.list_all_models(req, operations.ListAllModelsSecurity(
-    bearer="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.model_entities is not None:
@@ -302,18 +292,17 @@ from leapmlapi.models import operations, shared
 
 s = leapmlapi.LeapMLAPI()
 
-
 req = operations.QueueTrainingJobRequest(
     train_model_dto=shared.TrainModelDto(
-        base_weights_id="minus",
+        base_weights_id='minus',
         steps=8121.69,
-        webhook_url="https://example.com/webhook",
+        webhook_url='https://example.com/webhook',
     ),
-    model_id="voluptatum",
+    model_id='voluptatum',
 )
 
 res = s.fine_tuning.queue_training_job(req, operations.QueueTrainingJobSecurity(
-    bearer="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.model_version_entity is not None:
@@ -332,13 +321,12 @@ from leapmlapi.models import operations
 
 s = leapmlapi.LeapMLAPI()
 
-
 req = operations.RetrieveSingleModelRequest(
-    model_id="iusto",
+    model_id='iusto',
 )
 
 res = s.fine_tuning.retrieve_single_model(req, operations.RetrieveSingleModelSecurity(
-    bearer="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.model_entity is not None:

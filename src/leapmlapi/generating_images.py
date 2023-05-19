@@ -21,6 +21,7 @@ class GeneratingImages:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def inferences_controller_create(self, request: operations.InferencesControllerCreateRequest, security: operations.InferencesControllerCreateSecurity) -> operations.InferencesControllerCreateResponse:
         r"""Generate an image using a text prompt
         Generate an image using a text prompt. The model used to generate the image is determined by the `modelId` parameter. A job ID is returned that can be used to retrieve the generated image(s).
@@ -28,13 +29,14 @@ class GeneratingImages:
         base_url = self._server_url
         
         url = utils.generate_url(operations.InferencesControllerCreateRequest, base_url, '/api/v1/images/models/{modelId}/inferences', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "create_inference_dto", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
@@ -50,6 +52,7 @@ class GeneratingImages:
 
         return res
 
+    
     def inferences_controller_find_all(self, request: operations.InferencesControllerFindAllRequest, security: operations.InferencesControllerFindAllSecurity) -> operations.InferencesControllerFindAllResponse:
         r"""List inference jobs for a model
         Fetch a list of inference jobs for a particular model.
@@ -57,12 +60,14 @@ class GeneratingImages:
         base_url = self._server_url
         
         url = utils.generate_url(operations.InferencesControllerFindAllRequest, base_url, '/api/v1/images/models/{modelId}/inferences', request)
-        
+        headers = {}
         query_params = utils.get_query_params(operations.InferencesControllerFindAllRequest, request)
+        headers['Accept'] = '*/*'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
-        http_res = client.request('GET', url, params=query_params)
+        http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.InferencesControllerFindAllResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -70,6 +75,7 @@ class GeneratingImages:
 
         return res
 
+    
     def inferences_controller_find_one(self, request: operations.InferencesControllerFindOneRequest, security: operations.InferencesControllerFindOneSecurity) -> operations.InferencesControllerFindOneResponse:
         r"""Get a single inference job
         This endpoint will retrieve a specific inference for a particular model.
@@ -77,11 +83,13 @@ class GeneratingImages:
         base_url = self._server_url
         
         url = utils.generate_url(operations.InferencesControllerFindOneRequest, base_url, '/api/v1/images/models/{modelId}/inferences/{inferenceId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.InferencesControllerFindOneResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -93,16 +101,21 @@ class GeneratingImages:
 
         return res
 
+    
     def inferences_controller_remove(self, request: operations.InferencesControllerRemoveRequest, security: operations.InferencesControllerRemoveSecurity) -> operations.InferencesControllerRemoveResponse:
-        r"""Delete Inference"""
+        r"""Delete Inference
+        Deleting an inference will completely delete the generated images from storage and from your inference history.
+        """
         base_url = self._server_url
         
         url = utils.generate_url(operations.InferencesControllerRemoveRequest, base_url, '/api/v1/images/models/{modelId}/inferences/{inferenceId}', request)
-        
+        headers = {}
+        headers['Accept'] = '*/*'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
-        http_res = client.request('DELETE', url)
+        http_res = client.request('DELETE', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.InferencesControllerRemoveResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

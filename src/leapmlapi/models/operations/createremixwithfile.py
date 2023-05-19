@@ -3,31 +3,39 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import controlentity as shared_controlentity
+from ..shared import remixjob as shared_remixjob
+from enum import Enum
 from typing import Optional
 
 
 @dataclasses.dataclass
-class ControlControllerCreateSecurity:
+class CreateRemixWithFileSecurity:
     
     bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
     
 
 @dataclasses.dataclass
-class ControlControllerCreateRequestBodyFiles:
+class CreateRemixWithFileRequestBodyFiles:
     
     content: bytes = dataclasses.field(metadata={'multipart_form': { 'content': True }})
     files: str = dataclasses.field(metadata={'multipart_form': { 'field_name': 'files' }})
     
+class CreateRemixWithFileRequestBodyMode(str, Enum):
+    r"""The segmentation mode that should be used when generating the image."""
+    CANNY = 'canny'
+    MLSD = 'mlsd'
+    POSE = 'pose'
+    SCRIBBLE = 'scribble'
+
 
 @dataclasses.dataclass
-class ControlControllerCreateRequestBody:
+class CreateRemixWithFileRequestBody1:
     
-    files: ControlControllerCreateRequestBodyFiles = dataclasses.field(metadata={'multipart_form': { 'file': True }})
+    files: CreateRemixWithFileRequestBodyFiles = dataclasses.field(metadata={'multipart_form': { 'file': True }})
     r"""The image to upload"""
     prompt: str = dataclasses.field(metadata={'multipart_form': { 'field_name': 'prompt' }})
     r"""A text prompt explaining what the generated image should look like."""
-    mode: Optional[str] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'mode' }})
+    mode: Optional[CreateRemixWithFileRequestBodyMode] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'mode' }})
     r"""The segmentation mode that should be used when generating the image."""
     negative_prompt: Optional[str] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'negativePrompt' }})
     r"""A statement explaining what to avoid in the image"""
@@ -42,18 +50,18 @@ class ControlControllerCreateRequestBody:
     
 
 @dataclasses.dataclass
-class ControlControllerCreateRequest:
+class CreateRemixWithFileRequest:
     
     model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
-    request_body: ControlControllerCreateRequestBody = dataclasses.field(metadata={'request': { 'media_type': 'multipart/form-data' }})
+    request_body: CreateRemixWithFileRequestBody1 = dataclasses.field(metadata={'request': { 'media_type': 'multipart/form-data' }})
     
 
 @dataclasses.dataclass
-class ControlControllerCreateResponse:
+class CreateRemixWithFileResponse:
     
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    control_entity: Optional[shared_controlentity.ControlEntity] = dataclasses.field(default=None)
-    r"""The newly generated image."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    remix_job: Optional[shared_remixjob.RemixJob] = dataclasses.field(default=None)
+    r"""The newly generated image."""
     

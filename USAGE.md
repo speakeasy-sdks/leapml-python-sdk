@@ -5,13 +5,12 @@ from leapmlapi.models import operations
 
 s = leapmlapi.LeapMLAPI()
 
-
 req = operations.ModelsControllerRemoveRequest(
-    model_id="corrupti",
+    model_id='corrupti',
 )
 
 res = s.fine_tuning.models_controller_remove(req, operations.ModelsControllerRemoveSecurity(
-    bearer="Bearer YOUR_BEARER_TOKEN_HERE",
+    bearer="YOUR_BEARER_TOKEN_HERE",
 ))
 
 if res.status_code == 200:

@@ -21,16 +21,19 @@ class FineTuning:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def models_controller_remove(self, request: operations.ModelsControllerRemoveRequest, security: operations.ModelsControllerRemoveSecurity) -> operations.ModelsControllerRemoveResponse:
         r"""Delete a Model"""
         base_url = self._server_url
         
         url = utils.generate_url(operations.ModelsControllerRemoveRequest, base_url, '/api/v1/images/models/{modelId}', request)
-        
+        headers = {}
+        headers['Accept'] = '*/*'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
-        http_res = client.request('DELETE', url)
+        http_res = client.request('DELETE', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ModelsControllerRemoveResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -38,6 +41,7 @@ class FineTuning:
 
         return res
 
+    
     def samples_controller_create(self, request: operations.SamplesControllerCreateRequest, security: operations.SamplesControllerCreateSecurity) -> operations.SamplesControllerCreateResponse:
         r"""Upload Image Samples
         Upload one or multiple image sample to a model.
@@ -45,13 +49,14 @@ class FineTuning:
         base_url = self._server_url
         
         url = utils.generate_url(operations.SamplesControllerCreateRequest, base_url, '/api/v1/images/models/{modelId}/samples', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
@@ -67,6 +72,7 @@ class FineTuning:
 
         return res
 
+    
     def samples_controller_create_url(self, request: operations.SamplesControllerCreateURLRequest, security: operations.SamplesControllerCreateURLSecurity) -> operations.SamplesControllerCreateURLResponse:
         r"""Upload Image Samples Via Url
         Upload one or multiple image sample to a model.
@@ -74,7 +80,6 @@ class FineTuning:
         base_url = self._server_url
         
         url = utils.generate_url(operations.SamplesControllerCreateURLRequest, base_url, '/api/v1/images/models/{modelId}/samples/url', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "upload_samples_via_url_dto", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -82,6 +87,8 @@ class FineTuning:
         if data is None and form is None:
             raise Exception('request body is required')
         query_params = utils.get_query_params(operations.SamplesControllerCreateURLRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
@@ -97,6 +104,7 @@ class FineTuning:
 
         return res
 
+    
     def samples_controller_find_all(self, request: operations.SamplesControllerFindAllRequest, security: operations.SamplesControllerFindAllSecurity) -> operations.SamplesControllerFindAllResponse:
         r"""List Image Samples
         Given a model ID, returns all image samples for that model.
@@ -104,11 +112,13 @@ class FineTuning:
         base_url = self._server_url
         
         url = utils.generate_url(operations.SamplesControllerFindAllRequest, base_url, '/api/v1/images/models/{modelId}/samples', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.SamplesControllerFindAllResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -120,6 +130,7 @@ class FineTuning:
 
         return res
 
+    
     def samples_controller_find_one(self, request: operations.SamplesControllerFindOneRequest, security: operations.SamplesControllerFindOneSecurity) -> operations.SamplesControllerFindOneResponse:
         r"""Get Image Sample
         Given a model ID and a sample ID, returns the image sample.
@@ -127,11 +138,13 @@ class FineTuning:
         base_url = self._server_url
         
         url = utils.generate_url(operations.SamplesControllerFindOneRequest, base_url, '/api/v1/images/models/{modelId}/samples/{sampleId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.SamplesControllerFindOneResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -143,6 +156,7 @@ class FineTuning:
 
         return res
 
+    
     def samples_controller_remove(self, request: operations.SamplesControllerRemoveRequest, security: operations.SamplesControllerRemoveSecurity) -> operations.SamplesControllerRemoveResponse:
         r"""Archive Image Sample
         Given a model ID and a sample ID, archives the image sample. Archived samples are not used for training.
@@ -150,11 +164,13 @@ class FineTuning:
         base_url = self._server_url
         
         url = utils.generate_url(operations.SamplesControllerRemoveRequest, base_url, '/api/v1/images/models/{modelId}/samples/{sampleId}/archive', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
-        http_res = client.request('POST', url)
+        http_res = client.request('POST', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.SamplesControllerRemoveResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -166,6 +182,7 @@ class FineTuning:
 
         return res
 
+    
     def versions_controller_find_all(self, request: operations.VersionsControllerFindAllRequest, security: operations.VersionsControllerFindAllSecurity) -> operations.VersionsControllerFindAllResponse:
         r"""List All Model Versions
         This endpoint will return a list of all versions of a model including the status of each model.
@@ -173,11 +190,13 @@ class FineTuning:
         base_url = self._server_url
         
         url = utils.generate_url(operations.VersionsControllerFindAllRequest, base_url, '/api/v1/images/models/{modelId}/versions', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.VersionsControllerFindAllResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -189,6 +208,7 @@ class FineTuning:
 
         return res
 
+    
     def versions_controller_find_one(self, request: operations.VersionsControllerFindOneRequest, security: operations.VersionsControllerFindOneSecurity) -> operations.VersionsControllerFindOneResponse:
         r"""Get Model Version
         This endpoint will return a version of a model including the status of the model.
@@ -196,11 +216,13 @@ class FineTuning:
         base_url = self._server_url
         
         url = utils.generate_url(operations.VersionsControllerFindOneRequest, base_url, '/api/v1/images/models/{modelId}/versions/{versionId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.VersionsControllerFindOneResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -212,6 +234,7 @@ class FineTuning:
 
         return res
 
+    
     def create_model(self, request: shared.CreateModelDto, security: operations.CreateModelSecurity) -> operations.CreateModelResponse:
         r"""Create Model
         This endpoint will create a new model
@@ -219,13 +242,14 @@ class FineTuning:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/api/v1/images/models'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
@@ -241,6 +265,7 @@ class FineTuning:
 
         return res
 
+    
     def list_all_models(self, request: operations.ListAllModelsRequest, security: operations.ListAllModelsSecurity) -> operations.ListAllModelsResponse:
         r"""List All Models
         This endpoint will return a list of all models for the workspace.
@@ -248,12 +273,14 @@ class FineTuning:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/api/v1/images/models'
-        
+        headers = {}
         query_params = utils.get_query_params(operations.ListAllModelsRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
-        http_res = client.request('GET', url, params=query_params)
+        http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListAllModelsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -265,6 +292,7 @@ class FineTuning:
 
         return res
 
+    
     def queue_training_job(self, request: operations.QueueTrainingJobRequest, security: operations.QueueTrainingJobSecurity) -> operations.QueueTrainingJobResponse:
         r"""Queue Training Job
         This endpoint will queue a new model version to be trained. 
@@ -276,11 +304,12 @@ class FineTuning:
         base_url = self._server_url
         
         url = utils.generate_url(operations.QueueTrainingJobRequest, base_url, '/api/v1/images/models/{modelId}/queue', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "train_model_dto", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
@@ -296,6 +325,7 @@ class FineTuning:
 
         return res
 
+    
     def retrieve_single_model(self, request: operations.RetrieveSingleModelRequest, security: operations.RetrieveSingleModelSecurity) -> operations.RetrieveSingleModelResponse:
         r"""Retrieve a Single Model
         This endpoint will return a single model.
@@ -303,11 +333,13 @@ class FineTuning:
         base_url = self._server_url
         
         url = utils.generate_url(operations.RetrieveSingleModelRequest, base_url, '/api/v1/images/models/{modelId}', request)
-        
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.RetrieveSingleModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

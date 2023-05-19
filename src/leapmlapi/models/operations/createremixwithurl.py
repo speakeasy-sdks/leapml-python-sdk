@@ -3,31 +3,31 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import bodydtowithurl as shared_bodydtowithurl
-from ..shared import controlentity as shared_controlentity
+from ..shared import remixjob as shared_remixjob
+from ..shared import remixjobwithurldto as shared_remixjobwithurldto
 from typing import Optional
 
 
 @dataclasses.dataclass
-class ControlControllerCreateWithURLSecurity:
+class CreateRemixWithURLSecurity:
     
     bearer: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
     
 
 @dataclasses.dataclass
-class ControlControllerCreateWithURLRequest:
+class CreateRemixWithURLRequest:
     
-    body_dto_with_url: shared_bodydtowithurl.BodyDtoWithURL = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})
     r"""The ID of the model to use for the image generation."""
+    remix_job_with_url_dto: shared_remixjobwithurldto.RemixJobWithURLDto = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     
 
 @dataclasses.dataclass
-class ControlControllerCreateWithURLResponse:
+class CreateRemixWithURLResponse:
     
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    control_entity: Optional[shared_controlentity.ControlEntity] = dataclasses.field(default=None)
-    r"""The newly created job."""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    remix_job: Optional[shared_remixjob.RemixJob] = dataclasses.field(default=None)
+    r"""The newly created job."""
     
