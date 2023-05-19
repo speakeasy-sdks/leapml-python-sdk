@@ -89,3 +89,225 @@ Based on:
 Based on:
 - OpenAPI Doc 1.0 https://api.leapml.dev/api-json
 - Speakeasy CLI 1.5.4 https://github.com/speakeasy-api/speakeasy
+
+## 2023-03-01 01:44:35
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.6.0 https://github.com/speakeasy-api/speakeasy
+
+## 2023-03-02 01:41:44
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.7.1 https://github.com/speakeasy-api/speakeasy
+
+## 2023-03-04 01:26:47
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.8.2 https://github.com/speakeasy-api/speakeasy
+
+## 2023-03-05 01:48:24
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.8.2 https://github.com/speakeasy-api/speakeasy
+
+## 2023-03-06 01:38:11
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.8.4 https://github.com/speakeasy-api/speakeasy
+
+## 2023-03-07 01:43:38
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.8.5 https://github.com/speakeasy-api/speakeasy
+
+## 2023-03-08 01:40:53
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.8.6 https://github.com/speakeasy-api/speakeasy
+
+## 2023-03-09 01:40:58
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.8.7 https://github.com/speakeasy-api/speakeasy
+
+## 2023-03-10 01:41:11
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.9.1 https://github.com/speakeasy-api/speakeasy
+
+## 2023-03-11 01:19:55
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.9.2 https://github.com/speakeasy-api/speakeasy
+
+## 2023-03-16 01:25:19
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.12.0 https://github.com/speakeasy-api/speakeasy
+
+## 2023-03-17 01:23:30
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.12.1 https://github.com/speakeasy-api/speakeasy
+
+## 2023-03-18 01:22:39
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.12.3 https://github.com/speakeasy-api/speakeasy
+
+## 2023-03-21 01:19:08
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.12.4 https://github.com/speakeasy-api/speakeasy
+
+## 2023-03-22 01:19:36
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.13.0 https://github.com/speakeasy-api/speakeasy
+
+## 2023-03-23 01:19:33
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.15.0 https://github.com/speakeasy-api/speakeasy
+
+## 2023-03-24 01:19:33
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.17.0 https://github.com/speakeasy-api/speakeasy
+
+## 2023-03-25 01:17:42
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.18.7 https://github.com/speakeasy-api/speakeasy
+
+## 2023-03-28 01:22:47
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.18.9 https://github.com/speakeasy-api/speakeasy
+
+## 2023-03-29 01:35:30
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.19.2 https://github.com/speakeasy-api/speakeasy
+
+## 2023-03-30 01:22:38
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.19.2 https://github.com/speakeasy-api/speakeasy
+
+## 2023-04-01 01:20:26
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.19.3 https://github.com/speakeasy-api/speakeasy
+
+## 2023-04-02 01:22:10
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.19.3 https://github.com/speakeasy-api/speakeasy
+
+## 2023-04-06 01:15:49
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.19.6 https://github.com/speakeasy-api/speakeasy
+
+## 2023-04-12 01:17:41
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.19.7 https://github.com/speakeasy-api/speakeasy
+
+## 2023-04-14 01:17:25
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.20.0 https://github.com/speakeasy-api/speakeasy
+
+## 2023-04-18 01:16:49
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.20.1 https://github.com/speakeasy-api/speakeasy
+
+## 2023-04-19 01:19:15
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.20.2 https://github.com/speakeasy-api/speakeasy
+
+## 2023-04-20 01:16:27
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.21.3 https://github.com/speakeasy-api/speakeasy
+
+## 2023-04-21 01:16:42
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.21.4 https://github.com/speakeasy-api/speakeasy
+
+## 2023-04-22 01:18:30
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.22.1 https://github.com/speakeasy-api/speakeasy
+
+## 2023-04-25 01:19:54
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.22.2 https://github.com/speakeasy-api/speakeasy
+
+## 2023-04-26 01:17:51
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.23.1 https://github.com/speakeasy-api/speakeasy
+
+## 2023-04-27 01:19:32
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.25.1 https://github.com/speakeasy-api/speakeasy
+
+## 2023-04-28 01:19:49
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.26.2 https://github.com/speakeasy-api/speakeasy
+
+## 2023-04-29 01:18:00
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.26.4 https://github.com/speakeasy-api/speakeasy
+
+## 2023-05-19 01:19:57
+### Changes
+Based on:
+- OpenAPI Doc 1.0 https://api.leapml.dev/api-json
+- Speakeasy CLI 1.35.0 https://github.com/speakeasy-api/speakeasy
